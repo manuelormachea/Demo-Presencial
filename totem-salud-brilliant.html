@@ -16,13 +16,7 @@
       --numia-text: #1f2937;
       --numia-text-light: #6b7280;
     }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Roboto', Arial, sans-serif;
       background: #f5f5f5;
@@ -35,14 +29,12 @@
       justify-content: center;
       margin: 0;
     }
-    
-    /* Contenedor del tótem */
     .totem-container {
       max-width: 600px;
       width: 100%;
       background: white;
       border-radius: 24px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
       overflow: hidden;
       position: relative;
       height: calc(100vh - 4rem);
@@ -50,8 +42,6 @@
       flex-direction: column;
       flex-shrink: 0;
     }
-    
-    /* Header del tótem */
     .totem-header {
       background: var(--numia-azul-oscuro);
       padding: 1.5rem 2rem;
@@ -61,20 +51,6 @@
       gap: 0.75rem;
       flex-shrink: 0;
     }
-    
-    .totem-logo {
-      width: 40px;
-      height: 40px;
-      background: white;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: var(--numia-azul-oscuro);
-      font-size: 1.2rem;
-    }
-    
     .totem-content {
       flex: 1;
       overflow: hidden;
@@ -85,28 +61,8 @@
       align-items: center;
       min-height: 0;
     }
-    
-    /* Pantalla 1: Ingreso de DNI */
-    .screen-dni {
-      width: 100%;
-      max-width: 500px;
-      text-align: center;
-    }
-    
-    .screen-dni h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--numia-text);
-      margin-bottom: 0.75rem;
-    }
-    
-    .screen-dni .instruction {
-      font-size: 1rem;
-      color: var(--numia-azul);
-      margin-bottom: 1.5rem;
-      font-weight: 500;
-    }
-    
+    .screen-dni { width: 100%; max-width: 500px; text-align: center; }
+    .screen-dni .instruction { font-size: 1rem; color: var(--numia-azul); margin-bottom: 1.5rem; font-weight: 500; }
     .dni-display {
       background: white;
       color: var(--numia-text);
@@ -123,15 +79,8 @@
       font-family: 'Courier New', monospace;
       letter-spacing: 0.2rem;
     }
-    
-    .dni-display.empty {
-      color: rgba(0, 0, 0, 0.3);
-    }
-    
-    .dni-display.empty:before {
-      content: 'Ingrese su DNI';
-    }
-    
+    .dni-display.empty { color: rgba(0,0,0,0.3); }
+    .dni-display.empty:before { content: 'Ingrese su DNI'; }
     .keypad {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -141,7 +90,6 @@
       margin-left: auto;
       margin-right: auto;
     }
-    
     .keypad-row-bottom {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -151,7 +99,6 @@
       margin-right: auto;
       margin-bottom: 0.75rem;
     }
-    
     .keypad-btn {
       background: white;
       color: var(--numia-text);
@@ -166,39 +113,12 @@
       align-items: center;
       justify-content: center;
     }
-    
-    .keypad-btn:hover {
-      background: #f5f5f5;
-      transform: scale(1.02);
-    }
-    
-    .keypad-btn:active {
-      transform: scale(0.98);
-      background: #e5e5e5;
-    }
-    
-    .keypad-btn.delete {
-      background: white;
-      color: var(--numia-text);
-      border: 1px solid #000;
-      font-size: 1.5rem;
-    }
-    
-    .keypad-btn.delete:hover {
-      background: #f5f5f5;
-    }
-    
-    .keypad-btn.empty {
-      background: transparent;
-      border: none;
-      cursor: default;
-    }
-    
-    .keypad-btn.empty:hover {
-      transform: none;
-      background: transparent;
-    }
-    
+    .keypad-btn:hover { background: #f5f5f5; transform: scale(1.02); }
+    .keypad-btn:active { transform: scale(0.98); background: #e5e5e5; }
+    .keypad-btn.delete { background: white; color: var(--numia-text); border: 1px solid #000; font-size: 1.5rem; }
+    .keypad-btn.delete:hover { background: #f5f5f5; }
+    .keypad-btn.empty { background: transparent; border: none; cursor: default; }
+    .keypad-btn.empty:hover { transform: none; background: transparent; }
     .btn-continuar {
       width: 100%;
       max-width: 350px;
@@ -216,66 +136,16 @@
       margin-right: auto;
       display: block;
     }
-    
-    .btn-continuar:hover {
-      background: #ff7a2e;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(255, 140, 66, 0.4);
-    }
-    
-    .btn-continuar:active {
-      transform: translateY(0);
-    }
-    
-    .btn-continuar.active {
-      background: #ff8c42;
-    }
-    
-    .btn-continuar:disabled {
-      background: #d1d5db;
-      cursor: not-allowed;
-      transform: none;
-    }
-    
-    .btn-continuar:disabled:hover {
-      background: #d1d5db;
-      transform: none;
-      box-shadow: none;
-    }
-    
-    /* Pantalla 2: Opciones de atención */
-    .screen-opciones {
-      width: 100%;
-      max-width: 500px;
-      text-align: center;
-      display: none;
-    }
-    
-    .screen-opciones.active {
-      display: block;
-    }
-    
-    .screen-opciones h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--numia-text);
-      margin-bottom: 0.5rem;
-    }
-    
-    .screen-opciones .subtitle {
-      font-size: 0.95rem;
-      color: var(--numia-text-light);
-      margin-bottom: 1rem;
-    }
-    
-    .opciones-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      align-items: stretch;
-    }
-    
+    .btn-continuar:hover { background: #ff7a2e; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255,140,66,0.4); }
+    .btn-continuar:active { transform: translateY(0); }
+    .btn-continuar.active { background: #ff8c42; }
+    .btn-continuar:disabled { background: #d1d5db; cursor: not-allowed; transform: none; }
+    .btn-continuar:disabled:hover { background: #d1d5db; transform: none; box-shadow: none; }
+    .screen-opciones { width: 100%; max-width: 500px; text-align: center; display: none; }
+    .screen-opciones.active { display: block; }
+    .screen-opciones h2 { font-size: 1.5rem; font-weight: 700; color: var(--numia-text); margin-bottom: 0.5rem; }
+    .screen-opciones .subtitle { font-size: 0.95rem; color: var(--numia-text-light); margin-bottom: 1rem; }
+    .opciones-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem; align-items: stretch; }
     .opcion-card {
       background: white;
       border: 3px solid #e5e7eb;
@@ -288,452 +158,97 @@
       flex-direction: column;
       justify-content: center;
     }
-    
-    .opcion-card.videollamada {
-      padding: 1.5rem 1.25rem;
-    }
-    
-    .opcion-card.videollamada .opcion-icon {
-      font-size: 3rem;
-    }
-    
-    .opcion-card.videollamada .opcion-title {
-      font-size: 1.3rem;
-    }
-    
-    .opcion-card.presencial {
-      padding: 1rem;
-    }
-    
-    .opcion-card.presencial .opcion-icon {
-      font-size: 2rem;
-    }
-    
-    .opcion-card.presencial .opcion-title {
-      font-size: 1rem;
-    }
-    
-    .opcion-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    }
-    
-    .opcion-card.videollamada {
-      border-color: var(--numia-success);
-      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    }
-    
-    .opcion-card.videollamada:hover {
-      border-color: var(--numia-success);
-      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
-    }
-    
-    .opcion-card.presencial {
-      border-color: var(--numia-azul);
-      background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
-    }
-    
-    .opcion-card.presencial:hover {
-      border-color: var(--numia-azul);
-      box-shadow: 0 8px 24px rgba(134, 61, 255, 0.3);
-    }
-    
-    .opcion-card.opcion-demanda {
-      border-color: var(--numia-azul);
-      background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
-    }
-    .opcion-card.opcion-demanda:hover {
-      border-color: var(--numia-azul);
-      box-shadow: 0 8px 24px rgba(134, 61, 255, 0.3);
-    }
-    
-    .opcion-card.opcion-pago-qr {
-      border-color: #0d9488;
-      background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
-      cursor: pointer;
-    }
-    .opcion-card.opcion-pago-caja {
-      border-color: var(--numia-azul);
-      background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
-      cursor: pointer;
-    }
-    
-    .qr-sim-wrap {
-      padding: 1.5rem;
-      background: #fff;
-      border-radius: 16px;
-      display: inline-block;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      margin: 1rem auto;
-    }
-    .qr-sim-wrap img {
-      display: block;
-      width: 220px;
-      height: 220px;
-    }
-    
-    .opcion-card.disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    
-    .opcion-card.disabled:hover {
-      transform: none;
-    }
-    
-    .opcion-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .opcion-card.videollamada .opcion-icon {
-      color: var(--numia-success);
-    }
-    
-    .opcion-card.presencial .opcion-icon {
-      color: var(--numia-azul);
-    }
-    
-    .opcion-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--numia-text);
-      margin-bottom: 0.25rem;
-    }
-    
-    .opcion-badge {
-      display: inline-block;
-      background: var(--numia-success);
-      color: white;
-      font-size: 0.65rem;
-      font-weight: 600;
-      padding: 0.2rem 0.5rem;
-      border-radius: 8px;
-      margin-top: 0.25rem;
-    }
-    
-    .opcion-badge.less-recommended {
-      background: #ef4444;
-      color: white;
-    }
-    
-    .opcion-desc {
-      font-size: 0.75rem;
-      color: var(--numia-text-light);
-      margin-top: 0.25rem;
-    }
-    
-    /* Pantalla 3: Confirmación */
-    .screen-confirmacion {
-      width: 100%;
-      max-width: 500px;
-      text-align: center;
-      display: none;
-    }
-    
-    .screen-confirmacion.active {
-      display: block;
-    }
-    
-    .screen-confirmacion .success-icon {
-      font-size: 3.5rem;
-      color: var(--numia-success);
-      margin-bottom: 1rem;
-      animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-    
-    .screen-confirmacion h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--numia-text);
-      margin-bottom: 0.75rem;
-    }
-    
-    .screen-confirmacion .message {
-      font-size: 1rem;
-      color: var(--numia-text-light);
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
-    }
-    
-    .tiempo-espera {
-      background: #f0fdf4;
-      border: 2px solid var(--numia-success);
-      border-radius: 12px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
-    
-    .tiempo-espera-label {
-      font-size: 0.8rem;
-      color: var(--numia-text-light);
-      margin-bottom: 0.25rem;
-    }
-    
-    .tiempo-espera-valor {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--numia-success);
-    }
-    
-    .video-link-container {
-      margin-top: 2rem;
-    }
-    
-    .btn-video {
-      background: var(--numia-success);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.3s;
-    }
-    
-    .btn-video:hover {
-      background: #059669;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
-      color: white;
-    }
-    
-    /* Log container (igual que app-cliente.html) */
-    .log-container {
-      flex: 1;
-      min-width: 400px;
-      max-width: 500px;
-      background: #1a1a1a;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      display: none;
-      flex-direction: column;
-      height: calc(100vh - 4rem);
-      overflow: hidden;
-    }
-    
-    .log-container.visible {
-      display: flex;
-    }
-    
-    .log-header {
-      background: #2d2d2d;
-      padding: 1rem 1.5rem;
-      color: #ffffff;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border-bottom: 2px solid #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-shrink: 0;
-    }
-    
-    .log-header::before {
-      content: '▶';
-      color: #ffffff;
-      animation: blink 1s infinite;
-    }
-    
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0.3; }
-    }
-    
-    .log-content {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1rem;
-      color: #ffffff;
-      font-family: 'Courier New', monospace;
-      font-size: 0.85rem;
-      line-height: 1.6;
-    }
-    
-    .log-content::-webkit-scrollbar {
-      width: 8px;
-    }
-    
-    .log-content::-webkit-scrollbar-track {
-      background: #2d2d2d;
-    }
-    
-    .log-content::-webkit-scrollbar-thumb {
-      background: #555;
-      border-radius: 4px;
-    }
-    
-    .log-content::-webkit-scrollbar-thumb:hover {
-      background: #777;
-    }
-    
-    .atencion-section {
-      background: transparent !important;
-      border-radius: 0;
-      padding: 0;
-      margin: 0;
-      box-shadow: none;
-      display: none;
-    }
-    
-    .atencion-section.active {
-      display: block;
-    }
-    
-    .steps-container {
-      margin: 0;
-    }
-    
-    .step-item {
-      background: #2d2d2d;
-      border-left: 3px solid #ffffff;
-      border-radius: 4px;
-      padding: 0.75rem;
-      margin-bottom: 0.75rem;
-      color: #ffffff;
-      font-family: 'Courier New', monospace;
-    }
-    
-    .step-item.completed {
-      border-left-color: #ffffff;
-      background: #2d2d2d;
-    }
-    
-    .step-item.processing {
-      border-left-color: #ffaa00;
-      background: #3a2e1e;
-    }
-    
-    .step-title {
-      color: #ffffff;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-    
-    .step-output-content {
-      background: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 4px;
-      padding: 0.75rem;
-      margin-top: 0.5rem;
-      color: #ffffff;
-    }
-    
-    .summary-section {
-      background: #2d2d2d;
-      border-left: 3px solid #ffffff;
-      border-radius: 4px;
-      padding: 1rem;
-      margin-top: 1rem;
-      color: #ffffff;
-    }
-    
-    .summary-title {
-      color: #ffffff;
-      font-family: 'Courier New', monospace;
-    }
-    
-    .summary-content {
-      color: #ffffff;
-      font-family: 'Courier New', monospace;
-    }
-    
-    .conversation-output {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    
-    .conversation-line {
-      background: #1a1a1a;
-      border-left: 2px solid #444;
-      color: #ffffff;
-    }
-    
-    .conversation-line.success {
-      background: #2d2d2d;
-      border-left-color: #ffffff;
-      color: #ffffff;
-    }
-    
-    .conversation-line.error {
-      background: #3a1e1e;
-      border-left-color: #ff4444;
-      color: #ff8888;
-    }
-    
-    .conversation-line.info {
-      background: #1e1e3a;
-      border-left-color: #4444ff;
-    }
-    
+    .opcion-card.videollamada { padding: 1.5rem 1.25rem; border-color: var(--numia-success); background: linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%); }
+    .opcion-card.videollamada .opcion-icon { font-size: 3rem; color: var(--numia-success); }
+    .opcion-card.videollamada .opcion-title { font-size: 1.3rem; }
+    .opcion-card.videollamada:hover { border-color: var(--numia-success); box-shadow: 0 8px 24px rgba(16,185,129,0.3); }
+    .opcion-card.presencial { padding: 1rem; border-color: var(--numia-azul); background: linear-gradient(135deg,#f5f3ff 0%,#ede9fe 100%); }
+    .opcion-card.presencial .opcion-icon { font-size: 2rem; color: var(--numia-azul); }
+    .opcion-card.presencial .opcion-title { font-size: 1rem; }
+    .opcion-card.presencial:hover { border-color: var(--numia-azul); box-shadow: 0 8px 24px rgba(134,61,255,0.3); }
+    .opcion-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+    .opcion-card.opcion-demanda { border-color: var(--numia-azul); background: linear-gradient(135deg,#f5f3ff 0%,#ede9fe 100%); }
+    .opcion-card.opcion-demanda:hover { border-color: var(--numia-azul); box-shadow: 0 8px 24px rgba(134,61,255,0.3); }
+    .opcion-card.opcion-pago-qr { border-color: #0d9488; background: linear-gradient(135deg,#f0fdfa 0%,#ccfbf1 100%); cursor: pointer; }
+    .opcion-card.opcion-pago-caja { border-color: var(--numia-azul); background: linear-gradient(135deg,#f5f3ff 0%,#ede9fe 100%); cursor: pointer; }
+    .qr-sim-wrap { padding: 1.5rem; background: #fff; border-radius: 16px; display: inline-block; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin: 1rem auto; }
+    .qr-sim-wrap img { display: block; width: 220px; height: 220px; }
+    .opcion-card.disabled { opacity: 0.5; cursor: not-allowed; }
+    .opcion-card.disabled:hover { transform: none; }
+    .opcion-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .opcion-title { font-size: 1.1rem; font-weight: 700; color: var(--numia-text); margin-bottom: 0.25rem; }
+    .opcion-badge { display: inline-block; background: var(--numia-success); color: white; font-size: 0.65rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 8px; margin-top: 0.25rem; }
+    .opcion-badge.less-recommended { background: #ef4444; color: white; }
+    .opcion-desc { font-size: 0.75rem; color: var(--numia-text-light); margin-top: 0.25rem; }
+    .screen-confirmacion { width: 100%; max-width: 500px; text-align: center; display: none; }
+    .screen-confirmacion.active { display: block; }
+    .screen-confirmacion .success-icon { font-size: 3.5rem; color: var(--numia-success); margin-bottom: 1rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+    .screen-confirmacion h2 { font-size: 1.5rem; font-weight: 700; color: var(--numia-text); margin-bottom: 0.75rem; }
+    .screen-confirmacion .message { font-size: 1rem; color: var(--numia-text-light); margin-bottom: 1.5rem; line-height: 1.5; }
+    .tiempo-espera { background: #f0fdf4; border: 2px solid var(--numia-success); border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
+    .tiempo-espera-label { font-size: 0.8rem; color: var(--numia-text-light); margin-bottom: 0.25rem; }
+    .tiempo-espera-valor { font-size: 1.5rem; font-weight: 700; color: var(--numia-success); }
+    .video-link-container { margin-top: 2rem; }
+    .btn-video { background: var(--numia-success); color: white; border: none; border-radius: 12px; padding: 1rem 2rem; font-size: 1.1rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s; }
+    .btn-video:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(16,185,129,0.4); color: white; }
+    .log-container { flex: 1; min-width: 400px; max-width: 500px; background: #1a1a1a; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); display: none; flex-direction: column; height: calc(100vh - 4rem); overflow: hidden; }
+    .log-container.visible { display: flex; }
+    .log-header { background: #2d2d2d; padding: 1rem 1.5rem; color: #fff; font-family: 'Courier New',monospace; font-size: 0.9rem; font-weight: 600; border-bottom: 2px solid #fff; display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+    .log-header::before { content: '▶'; color: #fff; animation: blink 1s infinite; }
+    @keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0.3} }
+    .log-content { flex: 1; overflow-y: auto; padding: 1rem; color: #fff; font-family: 'Courier New',monospace; font-size: 0.85rem; line-height: 1.6; }
+    .log-content::-webkit-scrollbar { width: 8px; }
+    .log-content::-webkit-scrollbar-track { background: #2d2d2d; }
+    .log-content::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
+    .log-content::-webkit-scrollbar-thumb:hover { background: #777; }
+    .atencion-section { background: transparent !important; border-radius: 0; padding: 0; margin: 0; box-shadow: none; display: none; }
+    .atencion-section.active { display: block; }
+    .steps-container { margin: 0; }
+    .step-item { background: #2d2d2d; border-left: 3px solid #fff; border-radius: 4px; padding: 0.75rem; margin-bottom: 0.75rem; color: #fff; font-family: 'Courier New',monospace; }
+    .step-item.completed { border-left-color: #fff; background: #2d2d2d; }
+    .step-item.processing { border-left-color: #ffaa00; background: #3a2e1e; }
+    .step-title { color: #fff; font-weight: 600; margin-bottom: 0.25rem; }
+    .step-output-content { background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 0.75rem; margin-top: 0.5rem; color: #fff; }
+    .summary-section { background: #2d2d2d; border-left: 3px solid #fff; border-radius: 4px; padding: 1rem; margin-top: 1rem; color: #fff; }
+    .summary-title { color: #fff; font-family: 'Courier New',monospace; }
+    .summary-content { color: #fff; font-family: 'Courier New',monospace; }
     @media (max-width: 1024px) {
-      body {
-        flex-direction: column;
-        padding: 1rem;
-      }
-      
-      .totem-container {
-        max-width: 100%;
-        height: 50vh;
-      }
-      
-      .log-container {
-        min-width: 100%;
-        max-width: 100%;
-        height: 50vh;
-      }
+      body { flex-direction: column; padding: 1rem; }
+      .totem-container { max-width: 100%; height: 50vh; }
+      .log-container { min-width: 100%; max-width: 100%; height: 50vh; }
     }
   </style>
 </head>
 <body>
-  <!-- Contenedor del tótem -->
   <div class="totem-container">
-    <!-- Header -->
     <div class="totem-header">
       <img src="images/numia.png" alt="Numia" style="height: 40px; object-fit: contain;">
     </div>
-    
-    <!-- Contenido del tótem -->
     <div class="totem-content">
-      <!-- Pantalla 0: Demanda espontánea o Citas -->
+
+      <!-- Pantalla 0: Tipo de atención -->
       <div class="screen-opciones" id="screenTipoAtencion" style="display: block;">
         <h2>¿Cómo desea ser atendido?</h2>
         <div class="subtitle">Seleccione el tipo de atención</div>
         <div class="opciones-grid" id="tipoAtencionGrid">
-          <div class="opcion-card" data-tipo="demanda" style="cursor: pointer; border-color: var(--numia-azul); background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);">
-            <div class="opcion-icon" style="color: var(--numia-azul);">
-              <i class="bi bi-person-plus"></i>
-            </div>
+          <div class="opcion-card" data-tipo="demanda" style="cursor:pointer;border-color:var(--numia-azul);background:linear-gradient(135deg,#f5f3ff 0%,#ede9fe 100%);">
+            <div class="opcion-icon" style="color:var(--numia-azul);"><i class="bi bi-person-plus"></i></div>
             <div class="opcion-title">Demanda espontánea</div>
             <div class="opcion-desc">Atención sin cita previa</div>
           </div>
-          <div class="opcion-card" data-tipo="cita" style="cursor: pointer; border-color: var(--numia-success); background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
-            <div class="opcion-icon" style="color: var(--numia-success);">
-              <i class="bi bi-calendar-check"></i>
-            </div>
+          <div class="opcion-card" data-tipo="cita" style="cursor:pointer;border-color:var(--numia-success);background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);">
+            <div class="opcion-icon" style="color:var(--numia-success);"><i class="bi bi-calendar-check"></i></div>
             <div class="opcion-title">Citas programadas</div>
             <div class="opcion-desc">Ya tiene una cita agendada</div>
           </div>
         </div>
       </div>
-      
+
       <!-- Pantalla 1: Ingreso de DNI -->
       <div class="screen-dni" id="screenDni" style="display: none;">
-        <!-- Mensaje entre logo y teclado -->
-        <div class="instruction" style="margin-bottom: 1rem; font-size: 1rem; color: var(--numia-azul); font-weight: 500;">Bienvenido! Por favor ingrese su dni</div>
-        
+        <div class="instruction" style="margin-bottom:1rem;">Bienvenido! Por favor ingrese su dni</div>
         <div class="dni-display empty" id="dniDisplay"></div>
-        
         <div class="keypad">
           <button class="keypad-btn" data-number="1">1</button>
           <button class="keypad-btn" data-number="2">2</button>
@@ -745,369 +260,350 @@
           <button class="keypad-btn" data-number="8">8</button>
           <button class="keypad-btn" data-number="9">9</button>
         </div>
-        
         <div class="keypad-row-bottom">
           <button class="keypad-btn empty"></button>
           <button class="keypad-btn" data-number="0">0</button>
-          <button class="keypad-btn delete" id="btnDelete">
-            <i class="bi bi-arrow-left"></i>
-          </button>
+          <button class="keypad-btn delete" id="btnDelete"><i class="bi bi-arrow-left"></i></button>
         </div>
-        
         <button class="btn-continuar" id="btnContinuar" disabled>Continuar</button>
       </div>
-      
-      <!-- Pantalla 2: Opciones demanda espontánea (Brilliant) -->
+
+      <!-- Pantalla 2: Demanda espontánea -->
       <div class="screen-opciones" id="screenDemandaOpciones" style="display: none;">
         <h2>Seleccione el trámite</h2>
         <div class="subtitle">Demanda espontánea · Oficina Virtual</div>
         <div class="opciones-grid" id="demandaOpcionesGrid">
-          <div class="opcion-card opcion-demanda" data-tramite="atencion_virtual" data-queue-id="3069" data-branch-id="10162">
-            <div class="opcion-icon" style="color: var(--numia-azul);"><i class="bi bi-camera-video"></i></div>
+          <div class="opcion-card opcion-demanda" data-tramite="atencion_virtual">
+            <div class="opcion-icon" style="color:var(--numia-azul);"><i class="bi bi-camera-video"></i></div>
             <div class="opcion-title">Atención Virtual</div>
           </div>
-          <div class="opcion-card opcion-demanda" data-tramite="servicio_cliente" data-queue-id="3102" data-branch-id="10162">
-            <div class="opcion-icon" style="color: var(--numia-azul);"><i class="bi bi-headset"></i></div>
+          <div class="opcion-card opcion-demanda" data-tramite="servicio_cliente">
+            <div class="opcion-icon" style="color:var(--numia-azul);"><i class="bi bi-headset"></i></div>
             <div class="opcion-title">Servicio al Cliente</div>
           </div>
-          <div class="opcion-card opcion-demanda" data-tramite="autorizaciones" data-queue-id="3101" data-branch-id="10162">
-            <div class="opcion-icon" style="color: var(--numia-azul);"><i class="bi bi-file-medical"></i></div>
+          <div class="opcion-card opcion-demanda" data-tramite="autorizaciones">
+            <div class="opcion-icon" style="color:var(--numia-azul);"><i class="bi bi-file-medical"></i></div>
             <div class="opcion-title">Autorizaciones Médicas</div>
           </div>
         </div>
       </div>
-      
-      <!-- Pantalla 3: Citas (Cafam Agendamiento — agenda 10284, sucursal Central 20103) -->
+
+      <!-- Pantalla 3: Citas programadas — Check-in directo (sin llamada API) -->
       <div class="screen-opciones" id="screenCitaCardiologia" style="display: none;">
-        <h2 id="citaTituloPrincipal">Sus citas</h2>
-        <div class="subtitle">DNI: <span id="dniCitaDisplay"></span> · Cafam Agendamiento · Central</div>
-        <div class="opciones-grid" style="grid-template-columns: 1fr;">
-          <div id="citaBloqueContenido" class="opcion-card" style="border-color: var(--numia-success); background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); padding: 2rem;">
-            <div id="citaEstadoCarga" class="opcion-desc" style="margin: 1rem 0;">
-              <i class="bi bi-hourglass-split me-2"></i>Consultando agenda…
-            </div>
-            <div id="citaDetalleAgenda" style="display: none;"></div>
-            <button class="btn-continuar" id="btnCheckin" style="max-width: 280px; margin: 0.5rem auto 0; display: none;">
+        <h2>Cita programada</h2>
+        <div class="subtitle">DNI: <span id="dniCitaDisplay"></span></div>
+        <div class="opciones-grid" style="grid-template-columns:1fr;">
+          <div class="opcion-card" style="border-color:var(--numia-success);background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);padding:2rem;">
+            <div class="opcion-icon" style="color:var(--numia-success);font-size:3rem;"><i class="bi bi-calendar-check"></i></div>
+            <div class="opcion-title" style="font-size:1.3rem;">Cafam Agendamiento</div>
+            <div class="opcion-desc" style="margin:0.75rem 0;">Sucursal Central · Confirme su asistencia</div>
+            <button class="btn-continuar" id="btnCheckin" style="max-width:280px;margin:0.5rem auto 0;">
               <i class="bi bi-check-circle me-2"></i>Check-in
             </button>
           </div>
         </div>
       </div>
-      
-      <!-- Pantalla: Forma de pago (tras especialidad en demanda o check-in en citas; opciones visibles solo al terminar el análisis simulado) -->
+
+      <!-- Pantalla: Forma de pago -->
       <div class="screen-opciones" id="screenPago" style="display: none;">
         <h2>Forma de pago</h2>
-        <div class="subtitle" id="pagoSubtituloEspera" style="text-align: center; color: var(--numia-text-light);">
+        <div class="subtitle" id="pagoSubtituloEspera" style="text-align:center;color:var(--numia-text-light);">
           <i class="bi bi-hourglass-split me-2"></i>Completando análisis del agente… Las opciones de pago se habilitarán al finalizar.
         </div>
-        <div class="subtitle" id="pagoSubtituloElegir" style="display: none;">Seleccione cómo desea abonar</div>
-        <div class="opciones-grid" id="pagoOpcionesRow" style="display: none; grid-template-columns: 1fr 1fr;">
+        <div class="subtitle" id="pagoSubtituloElegir" style="display:none;">Seleccione cómo desea abonar</div>
+        <div class="opciones-grid" id="pagoOpcionesRow" style="display:none;grid-template-columns:1fr 1fr;">
           <div class="opcion-card opcion-pago-qr" id="btnPagoQr" role="button" tabindex="0">
-            <div class="opcion-icon" style="color: #0d9488;"><i class="bi bi-qr-code"></i></div>
+            <div class="opcion-icon" style="color:#0d9488;"><i class="bi bi-qr-code"></i></div>
             <div class="opcion-title">Pago con QR</div>
             <div class="opcion-desc">Abone con su billetera o banca móvil</div>
           </div>
           <div class="opcion-card opcion-pago-caja" id="btnPagoCaja" role="button" tabindex="0">
-            <div class="opcion-icon" style="color: var(--numia-azul);"><i class="bi bi-cash-coin"></i></div>
+            <div class="opcion-icon" style="color:var(--numia-azul);"><i class="bi bi-cash-coin"></i></div>
             <div class="opcion-title">Pago en caja</div>
             <div class="opcion-desc">Encolar turno para abonar en ventanilla</div>
           </div>
         </div>
-        <div id="pagoQrSimulacion" style="display: none; text-align: center; margin-top: 1rem;">
-          <p style="font-weight: 600; color: var(--numia-text); margin-bottom: 0.5rem;">Escaneé el código para simular el pago</p>
+        <div id="pagoQrSimulacion" style="display:none;text-align:center;margin-top:1rem;">
+          <p style="font-weight:600;color:var(--numia-text);margin-bottom:0.5rem;">Escaneé el código para simular el pago</p>
           <div class="qr-sim-wrap">
-            <img id="imgQrPagoSimulado" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=NUMIA-SALUD-PAGO-DEMO" width="220" height="220" alt="Código QR de pago (demo)" />
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=NUMIA-SALUD-PAGO-DEMO" width="220" height="220" alt="QR pago demo" />
           </div>
-          <p class="subtitle" style="margin-top: 0.75rem;"><i class="bi bi-hourglass-split me-1"></i>Procesando pago… espere</p>
+          <p class="subtitle" style="margin-top:0.75rem;"><i class="bi bi-hourglass-split me-1"></i>Procesando pago… espere</p>
         </div>
       </div>
-      
-      <!-- Pantalla 4: Opciones de atención (legacy - para compatibilidad) -->
+
+      <!-- Pantalla 4: Opciones legacy -->
       <div class="screen-opciones" id="screenOpciones" style="display: none;">
         <h2>Seleccione su preferencia</h2>
         <div class="subtitle">Elija cómo desea ser atendido</div>
         <div class="opciones-grid" id="opcionesGrid"></div>
       </div>
-      
+
       <!-- Pantalla 5: Confirmación -->
       <div class="screen-confirmacion" id="screenConfirmacion">
-        <div class="success-icon">
-          <i class="bi bi-check-circle-fill"></i>
-        </div>
+        <div class="success-icon"><i class="bi bi-check-circle-fill"></i></div>
         <h2>¡Atención solicitada!</h2>
-        <div class="message">
-          En breve uno de nuestros asesores lo atenderá.<br>
-          Por favor, manténgase en línea.
-        </div>
-        
-        <div class="tiempo-espera" id="tiempoEspera" style="display: none;">
+        <div class="message">En breve uno de nuestros asesores lo atenderá.<br>Por favor, manténgase en línea.</div>
+        <div class="tiempo-espera" id="tiempoEspera" style="display:none;">
           <div class="tiempo-espera-label">Tiempo de espera estimado</div>
           <div class="tiempo-espera-valor" id="tiempoEsperaValor">--</div>
         </div>
-        
-        <div class="video-link-container" id="videoLinkContainer" style="display: none;">
+        <div class="video-link-container" id="videoLinkContainer" style="display:none;">
           <a href="#" id="btnVideoLink" class="btn-video" target="_blank">
             <i class="bi bi-camera-video me-2"></i>Iniciar Videollamada
           </a>
         </div>
       </div>
+
     </div>
   </div>
-  
-  <!-- Contenedor de Logs a la derecha -->
+
+  <!-- Log panel -->
   <div class="log-container">
-    <div class="log-header">
-      Análisis del Agente
-    </div>
+    <div class="log-header">Análisis del Agente</div>
     <div class="log-content">
       <div id="atencionSection" class="atencion-section">
         <div id="stepsContainer" class="steps-container">
           <!-- Los pasos se agregarán aquí dinámicamente -->
         </div>
-        
-        <div id="summarySection" class="summary-section" style="display: none;">
-          <div class="summary-title">
-            <i class="bi bi-check-circle-fill"></i>
-            Resumen del Análisis
-          </div>
+        <div id="summarySection" class="summary-section" style="display:none;">
+          <div class="summary-title"><i class="bi bi-check-circle-fill"></i> Resumen del Análisis</div>
           <div id="summaryContent" class="summary-content"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+
       // ─── Configuración Brilliant ────────────────────────────────────────────
       const BRILLIANT = {
-        filavirtualBase:  'https://filavirtual2.debmedia.com',
-        filavirtualToken: '0luLnrK9theGzXrnHWYWee9Q31kGINPQNGMMEYcF',
-        citasUrl:         'https://citas2.debmedia.com/api/v2/schedules',
-        citasToken:       'N66f6FM25LpbG061CA7jdufsh1AUJXkKTRqpsiiG',
-        agendaId:         10284,
-        agendaNombre:     'Cafam Agendamiento',
-        branchCentralId:  20103,
-        branchCentralNombre: 'Central',
-        branchOficinaVirtualId: 10162,
+        filavirtualBase:        'https://filavirtual2.debmedia.com',
+        filavirtualToken:       '0luLnrK9theGzXrnHWYWee9Q31kGINPQNGMMEYcF',
+        branchOficinaVirtualId: '10162',
+        branchCentralId:        '10162',
         tramites: {
           atencion_virtual: { queueId: '3069', label: 'Atención Virtual' },
           servicio_cliente: { queueId: '3102', label: 'Servicio al Cliente' },
           autorizaciones:   { queueId: '3101', label: 'Autorizaciones Médicas' }
         },
-        citaEnqueueQueueId: '3102'  // cola para check-in de citas
+        citaCheckinQueueId: '4218',  // Check-In al confirmar cita programada
+        pagoEnCajaQueueId:  '3132'   // Pago en caja (siempre este queue)
       };
 
-      // Configuración de la API Journey Builder (para flujos avanzados)
       const JOURNEY_API_URL = 'https://api.journeybuilder.numia.co/api/v1/run/38223ec2-6123-4e6e-862a-4945161ed221?stream=false';
       const JOURNEY_API_KEY = 'sk-WfTsCY302RrciqoVRYAZWruD9mpyPKatAo8GU8tyzIM';
-      
-      // Variables de estado
+
+      // Estado
       let dniIngresado = '';
-      let tipoAtencion = null; // 'demanda' | 'cita'
-      /** @type {'demanda'|'cita'|null} */
+      let tipoAtencion = null;
       let contextoPagoOrigen = null;
-      /** @type {{ queueId: string, branchId: string, label: string }|null} */
       let tramiteSeleccionado = null;
       let pagoQrTimerId = null;
-      let analisisCompletado = false;
       let recomendacionVideollamada = false;
-      let messageText = null;
-      
-      // Elementos del DOM
-      const screenTipoAtencion = document.getElementById('screenTipoAtencion');
-      const screenDni = document.getElementById('screenDni');
-      const screenDemandaOpciones = document.getElementById('screenDemandaOpciones');
-      const screenCitaCardiologia = document.getElementById('screenCitaCardiologia');
-      const screenPago = document.getElementById('screenPago');
-      const screenOpciones = document.getElementById('screenOpciones');
-      const screenConfirmacion = document.getElementById('screenConfirmacion');
-      const dniDisplay = document.getElementById('dniDisplay');
-      const btnContinuar = document.getElementById('btnContinuar');
-      const btnDelete = document.getElementById('btnDelete');
-      const opcionesGrid = document.getElementById('opcionesGrid');
-      const atencionSection = document.getElementById('atencionSection');
-      const stepsContainer = document.getElementById('stepsContainer');
-      const summarySection = document.getElementById('summarySection');
-      const summaryContent = document.getElementById('summaryContent');
-      const logContainer = document.querySelector('.log-container');
-      /** @type {number[]} */
       let simulacionPasosAgenteTimeouts = [];
       let pagoOpcionesRevealTimeoutId = null;
-      
-      // Inicializar display
+
+      // DOM
+      const screenTipoAtencion    = document.getElementById('screenTipoAtencion');
+      const screenDni             = document.getElementById('screenDni');
+      const screenDemandaOpciones = document.getElementById('screenDemandaOpciones');
+      const screenCitaCardiologia = document.getElementById('screenCitaCardiologia');
+      const screenPago            = document.getElementById('screenPago');
+      const screenOpciones        = document.getElementById('screenOpciones');
+      const screenConfirmacion    = document.getElementById('screenConfirmacion');
+      const dniDisplay            = document.getElementById('dniDisplay');
+      const btnContinuar          = document.getElementById('btnContinuar');
+      const btnDelete             = document.getElementById('btnDelete');
+      const opcionesGrid          = document.getElementById('opcionesGrid');
+      const atencionSection       = document.getElementById('atencionSection');
+      const stepsContainer        = document.getElementById('stepsContainer');
+      const summarySection        = document.getElementById('summarySection');
+      const summaryContent        = document.getElementById('summaryContent');
+      const logContainer          = document.querySelector('.log-container');
+
       actualizarDisplay();
-      
+
+      // ─── Helpers ────────────────────────────────────────────────────────────
+
+      function escapeHtml(text) {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      }
+
       function cancelarSimulacionPasosAgente() {
-        simulacionPasosAgenteTimeouts.forEach(function (id) { clearTimeout(id); });
+        simulacionPasosAgenteTimeouts.forEach(id => clearTimeout(id));
         simulacionPasosAgenteTimeouts = [];
         if (pagoOpcionesRevealTimeoutId !== null) {
           clearTimeout(pagoOpcionesRevealTimeoutId);
           pagoOpcionesRevealTimeoutId = null;
         }
       }
-      
+
       function revelarOpcionesPagoTrasAnalisis() {
-        var row = document.getElementById('pagoOpcionesRow');
-        var subEspera = document.getElementById('pagoSubtituloEspera');
-        var subElegir = document.getElementById('pagoSubtituloElegir');
-        if (subEspera) subEspera.style.display = 'none';
-        if (subElegir) subElegir.style.display = 'block';
-        if (row) row.style.display = 'grid';
+        document.getElementById('pagoSubtituloEspera').style.display = 'none';
+        document.getElementById('pagoSubtituloElegir').style.display = 'block';
+        document.getElementById('pagoOpcionesRow').style.display    = 'grid';
         pagoOpcionesRevealTimeoutId = null;
       }
-      
+
       function ocultarOpcionesPagoHastaAnalisis() {
-        var row = document.getElementById('pagoOpcionesRow');
-        var subEspera = document.getElementById('pagoSubtituloEspera');
-        var subElegir = document.getElementById('pagoSubtituloElegir');
-        if (row) row.style.display = 'none';
-        if (subEspera) subEspera.style.display = 'block';
-        if (subElegir) subElegir.style.display = 'none';
+        document.getElementById('pagoOpcionesRow').style.display     = 'none';
+        document.getElementById('pagoSubtituloEspera').style.display = 'block';
+        document.getElementById('pagoSubtituloElegir').style.display = 'none';
       }
-      
-      /** Simula el análisis del agente (panel derecho): un paso por segundo. */
+
       function iniciarSimulacionPasosAgente() {
         cancelarSimulacionPasosAgente();
         if (!stepsContainer) return;
         if (logContainer) logContainer.classList.add('visible');
-        if (atencionSection) {
-          atencionSection.style.display = 'block';
-          atencionSection.classList.add('active');
-        }
+        if (atencionSection) { atencionSection.style.display = 'block'; atencionSection.classList.add('active'); }
         if (summarySection) summarySection.style.display = 'none';
         stepsContainer.innerHTML = '';
-        var titulos = [
+        const titulos = [
           'Buscar datos del paciente',
           'Consultando información de prepaga',
-          'buscando historia clínica',
-          'Pririzando Cliente'
+          'Buscando historia clínica',
+          'Priorizando cliente'
         ];
-        titulos.forEach(function (titulo, i) {
-          var tid = setTimeout(function () {
-            var stepItem = document.createElement('div');
+        titulos.forEach(function(titulo, i) {
+          const tid = setTimeout(function() {
+            const stepItem = document.createElement('div');
             stepItem.className = 'step-item processing';
             stepItem.innerHTML =
               '<div class="step-title">' + escapeHtml(titulo) + '</div>' +
-              '<div class="step-output-content">' +
-              '<em style="color: #ffffff;">Herramienta ejecutada correctamente</em>' +
-              '</div>';
+              '<div class="step-output-content"><em style="color:#fff;">Herramienta ejecutada correctamente</em></div>';
             stepsContainer.appendChild(stepItem);
-            setTimeout(function () {
-              stepItem.classList.remove('processing');
-              stepItem.classList.add('completed');
-            }, 400);
-            var logContentEl = document.querySelector('.log-content');
-            if (logContentEl) logContentEl.scrollTop = logContentEl.scrollHeight;
+            setTimeout(() => { stepItem.classList.remove('processing'); stepItem.classList.add('completed'); }, 400);
+            const lc = document.querySelector('.log-content');
+            if (lc) lc.scrollTop = lc.scrollHeight;
           }, i * 1000);
           simulacionPasosAgenteTimeouts.push(tid);
         });
-        /* Último paso a los (n-1)s; +600 ms para la animación "completed" → recién ahí se muestran QR / caja */
-        var delayReveladoMs = (titulos.length - 1) * 1000 + 600;
-        pagoOpcionesRevealTimeoutId = setTimeout(function () {
-          revelarOpcionesPagoTrasAnalisis();
-        }, delayReveladoMs);
+        const delay = (titulos.length - 1) * 1000 + 600;
+        pagoOpcionesRevealTimeoutId = setTimeout(revelarOpcionesPagoTrasAnalisis, delay);
       }
-      
+
       function resetVistaPago() {
-        const row = document.getElementById('pagoOpcionesRow');
-        const qr = document.getElementById('pagoQrSimulacion');
-        if (row) row.style.display = 'grid';
-        var subEspera = document.getElementById('pagoSubtituloEspera');
-        var subElegir = document.getElementById('pagoSubtituloElegir');
-        if (subEspera) subEspera.style.display = 'none';
-        if (subElegir) subElegir.style.display = 'block';
-        if (qr) qr.style.display = 'none';
+        document.getElementById('pagoOpcionesRow').style.display     = 'grid';
+        document.getElementById('pagoSubtituloEspera').style.display = 'none';
+        document.getElementById('pagoSubtituloElegir').style.display = 'block';
+        document.getElementById('pagoQrSimulacion').style.display    = 'none';
         const bq = document.getElementById('btnPagoQr');
         const bc = document.getElementById('btnPagoCaja');
         if (bq) { bq.classList.remove('disabled'); bq.style.pointerEvents = ''; }
         if (bc) { bc.classList.remove('disabled'); bc.style.pointerEvents = ''; }
       }
-      
-      async function cerrarPagoYMostrarConfirmacionFinalQr() {
-        if (pagoQrTimerId) {
-          clearTimeout(pagoQrTimerId);
-          pagoQrTimerId = null;
-        }
-        // Encolar en Fila Virtual antes de mostrar confirmación
-        if (tramiteSeleccionado) {
-          try {
-            const apiUrl = BRILLIANT.filavirtualBase + '/api/v1/queue/' +
-              tramiteSeleccionado.queueId + '/branch/' +
-              tramiteSeleccionado.branchId + '/enqueue';
-            const response = await fetch(apiUrl, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'x-api-token': BRILLIANT.filavirtualToken
-              },
-              body: JSON.stringify({
-                firstName: 'Jorge',
-                lastName:  'Macera',
-                dni:       dniIngresado,
-                email:     'mail@mail.com',
-                phone:     '12345678'
-              })
-            });
-            const data = await response.json();
-            console.log('Encolado tras pago QR:', data);
-          } catch (err) {
-            console.error('Error al encolar tras pago QR:', err);
-            // No bloqueamos la confirmación si falla
-          }
-        }
-        if (screenPago) screenPago.style.display = 'none';
-        resetVistaPago();
-        document.getElementById('tiempoEspera').style.display = 'none';
-        document.getElementById('videoLinkContainer').style.display = 'none';
-        screenConfirmacion.classList.add('active');
-        const confirmacionTitle   = screenConfirmacion.querySelector('h2');
-        const confirmacionMessage = screenConfirmacion.querySelector('.message');
-        if (contextoPagoOrigen === 'cita') {
-          if (confirmacionTitle)   confirmacionTitle.textContent = '¡Pago registrado!';
-          if (confirmacionMessage) confirmacionMessage.innerHTML =
-            'Su pago fue simulado correctamente.<br>Su cita en <strong>' +
-            BRILLIANT.agendaNombre + '</strong> queda lista. Por favor, espere a ser llamado.';
-        } else if (contextoPagoOrigen === 'demanda' && tramiteSeleccionado) {
-          if (confirmacionTitle)   confirmacionTitle.textContent = '¡Pago registrado!';
-          if (confirmacionMessage) confirmacionMessage.innerHTML =
-            'Pago simulado correctamente.<br>Se ha registrado su solicitud de <strong>' +
-            tramiteSeleccionado.label + '</strong>. Espere a ser llamado.';
-        }
+
+      // ─── Encolamiento central ────────────────────────────────────────────────
+
+      async function encolarEnFilaVirtual(queueId, branchId) {
+        const url = BRILLIANT.filavirtualBase + '/api/v1/queue/' + queueId + '/branch/' + branchId + '/enqueue';
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-api-token': BRILLIANT.filavirtualToken },
+          body: JSON.stringify({ firstName: 'Jorge', lastName: 'Macera', dni: dniIngresado, email: 'mail@mail.com', phone: '12345678' })
+        });
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return await response.json();
       }
-      
+
+      // ─── Abrir pantalla de pago ──────────────────────────────────────────────
+
       function abrirPantallaPago(origen, tramiteKey) {
         contextoPagoOrigen = origen;
         if (origen === 'demanda' && tramiteKey && BRILLIANT.tramites[tramiteKey]) {
           const t = BRILLIANT.tramites[tramiteKey];
-          tramiteSeleccionado = {
-            queueId:  t.queueId,
-            branchId: String(BRILLIANT.branchOficinaVirtualId),
-            label:    t.label
-          };
+          tramiteSeleccionado = { queueId: t.queueId, branchId: BRILLIANT.branchOficinaVirtualId, label: t.label };
         } else if (origen === 'cita') {
-          tramiteSeleccionado = {
-            queueId:  BRILLIANT.citaEnqueueQueueId,
-            branchId: String(BRILLIANT.branchCentralId),
-            label:    'Cita programada'
-          };
+          // Check-in usa queue 4218
+          tramiteSeleccionado = { queueId: BRILLIANT.citaCheckinQueueId, branchId: BRILLIANT.branchCentralId, label: 'Check-In' };
         } else {
           tramiteSeleccionado = null;
         }
-        screenTipoAtencion.style.display   = 'none';
-        screenDni.style.display            = 'none';
+        screenTipoAtencion.style.display    = 'none';
+        screenDni.style.display             = 'none';
         screenDemandaOpciones.style.display = 'none';
         screenCitaCardiologia.style.display = 'none';
         screenOpciones.classList.remove('active');
         screenConfirmacion.classList.remove('active');
         resetVistaPago();
-        if (screenPago) screenPago.style.display = 'block';
+        screenPago.style.display = 'block';
         ocultarOpcionesPagoHastaAnalisis();
         iniciarSimulacionPasosAgente();
       }
-      
-      // Pantalla inicial: Demanda espontánea o Citas
+
+      // ─── Pago con QR — encola tramiteSeleccionado ────────────────────────────
+
+      async function cerrarPagoYMostrarConfirmacionFinalQr() {
+        if (pagoQrTimerId) { clearTimeout(pagoQrTimerId); pagoQrTimerId = null; }
+        if (tramiteSeleccionado) {
+          try {
+            const data = await encolarEnFilaVirtual(tramiteSeleccionado.queueId, tramiteSeleccionado.branchId);
+            console.log('Encolado tras pago QR:', data);
+          } catch (err) {
+            console.error('Error al encolar tras pago QR:', err);
+          }
+        }
+        screenPago.style.display = 'none';
+        resetVistaPago();
+        document.getElementById('tiempoEspera').style.display    = 'none';
+        document.getElementById('videoLinkContainer').style.display = 'none';
+        screenConfirmacion.classList.add('active');
+        const title   = screenConfirmacion.querySelector('h2');
+        const message = screenConfirmacion.querySelector('.message');
+        if (contextoPagoOrigen === 'cita') {
+          if (title)   title.textContent = '¡Pago registrado!';
+          if (message) message.innerHTML = 'Su pago fue simulado correctamente.<br>Su cita en <strong>Cafam Agendamiento</strong> queda lista. Por favor, espere a ser llamado.';
+        } else if (contextoPagoOrigen === 'demanda' && tramiteSeleccionado) {
+          if (title)   title.textContent = '¡Pago registrado!';
+          if (message) message.innerHTML = 'Pago simulado correctamente.<br>Se ha registrado su solicitud de <strong>' + tramiteSeleccionado.label + '</strong>. Espere a ser llamado.';
+        }
+      }
+
+      // ─── Botones de pago ────────────────────────────────────────────────────
+
+      const btnPagoQr   = document.getElementById('btnPagoQr');
+      const btnPagoCaja = document.getElementById('btnPagoCaja');
+
+      if (btnPagoQr) {
+        btnPagoQr.addEventListener('click', () => {
+          if (pagoQrTimerId) return;
+          document.getElementById('pagoOpcionesRow').style.display = 'none';
+          document.getElementById('pagoQrSimulacion').style.display = 'block';
+          btnPagoQr.classList.add('disabled');
+          if (btnPagoCaja) btnPagoCaja.classList.add('disabled');
+          pagoQrTimerId = setTimeout(async function() {
+            pagoQrTimerId = null;
+            await cerrarPagoYMostrarConfirmacionFinalQr();
+          }, 5000);
+        });
+      }
+
+      if (btnPagoCaja) {
+        // Pago en caja siempre encola queue 3132, mismo branch que el tramite activo
+        btnPagoCaja.addEventListener('click', async () => {
+          if (pagoQrTimerId) return;
+          const branchId = tramiteSeleccionado ? tramiteSeleccionado.branchId : BRILLIANT.branchOficinaVirtualId;
+          try {
+            screenPago.style.display = 'none';
+            resetVistaPago();
+            const data = await encolarEnFilaVirtual(BRILLIANT.pagoEnCajaQueueId, branchId);
+            console.log('Encolado pago en caja:', data);
+            mostrarPantallaConfirmacionPresencial();
+          } catch (err) {
+            console.error('Error pago en caja:', err);
+            alert('Error: ' + err.message);
+          }
+        });
+      }
+
+      // ─── Navegación ──────────────────────────────────────────────────────────
+
       document.querySelectorAll('#tipoAtencionGrid .opcion-card').forEach(card => {
         card.addEventListener('click', () => {
           tipoAtencion = card.getAttribute('data-tipo');
@@ -1115,387 +611,209 @@
           screenDni.style.display = 'block';
         });
       });
-      
-      // Función para agregar un número al DNI
+
       function agregarNumero(numero) {
-        if (dniIngresado.length < 15) {
-          dniIngresado += numero;
-          console.log('DNI ingresado:', dniIngresado);
-          actualizarDisplay();
-        }
+        if (dniIngresado.length < 15) { dniIngresado += numero; console.log('DNI:', dniIngresado); actualizarDisplay(); }
       }
-      
-      // Función para eliminar último dígito
+
       function eliminarUltimo() {
-        dniIngresado = dniIngresado.slice(0, -1);
-        console.log('DNI después de borrar:', dniIngresado);
-        actualizarDisplay();
+        dniIngresado = dniIngresado.slice(0, -1); console.log('DNI borrar:', dniIngresado); actualizarDisplay();
       }
-      
-      // Capturar teclas del teclado físico
+
       document.addEventListener('keydown', (e) => {
-        // Verificar si estamos en la pantalla de DNI (no oculta y otras pantallas no activas)
-        const screenDniVisible = screenDni && (screenDni.style.display === '' || screenDni.style.display === 'block' || !screenDni.style.display);
-        const screenOpcionesActive = screenOpciones.classList.contains('active');
-        const screenConfirmacionActive = screenConfirmacion.classList.contains('active');
-        
-        // Solo procesar si estamos en la pantalla de DNI
-        if (screenDniVisible && !screenOpcionesActive && !screenConfirmacionActive) {
+        const dniVisible    = screenDni && (screenDni.style.display === '' || screenDni.style.display === 'block' || !screenDni.style.display);
+        const opcionesActiva= screenOpciones.classList.contains('active');
+        const confirmActiva = screenConfirmacion.classList.contains('active');
+        if (dniVisible && !opcionesActiva && !confirmActiva) {
           console.log('Tecla presionada en pantalla DNI:', e.key);
-          
-          // Si es un número (0-9)
-          if (e.key >= '0' && e.key <= '9') {
-            e.preventDefault();
-            e.stopPropagation();
-            agregarNumero(e.key);
-          }
-          // Si es Backspace o Delete
-          else if (e.key === 'Backspace' || e.key === 'Delete') {
-            e.preventDefault();
-            e.stopPropagation();
-            eliminarUltimo();
-          }
-          // Si es Enter y hay DNI ingresado
-          else if (e.key === 'Enter' && dniIngresado.length > 0 && btnContinuar && !btnContinuar.disabled) {
-            e.preventDefault();
-            e.stopPropagation();
-            btnContinuar.click();
-          }
+          if (e.key >= '0' && e.key <= '9') { e.preventDefault(); e.stopPropagation(); agregarNumero(e.key); }
+          else if (e.key === 'Backspace' || e.key === 'Delete') { e.preventDefault(); e.stopPropagation(); eliminarUltimo(); }
+          else if (e.key === 'Enter' && dniIngresado.length > 0 && btnContinuar && !btnContinuar.disabled) { e.preventDefault(); e.stopPropagation(); btnContinuar.click(); }
         }
       });
-      
-      // Teclado numérico virtual
-      const keypadButtons = document.querySelectorAll('.keypad-btn[data-number]');
-      keypadButtons.forEach(btn => {
+
+      document.querySelectorAll('.keypad-btn[data-number]').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
-          const number = btn.getAttribute('data-number');
-          console.log('Tecla virtual presionada:', number);
-          agregarNumero(number);
+          console.log('Tecla virtual presionada:', btn.getAttribute('data-number'));
+          agregarNumero(btn.getAttribute('data-number'));
         });
       });
-      
-      // Botón eliminar virtual
-      if (btnDelete) {
-        btnDelete.addEventListener('click', (e) => {
-          e.preventDefault();
-          eliminarUltimo();
-        });
-      }
-      
-      // Actualizar display del DNI
+
+      if (btnDelete) btnDelete.addEventListener('click', (e) => { e.preventDefault(); eliminarUltimo(); });
+
       function actualizarDisplay() {
-        if (!dniDisplay) {
-          console.error('dniDisplay no encontrado');
-          return;
-        }
-        
+        if (!dniDisplay) { console.error('dniDisplay no encontrado'); return; }
         if (dniIngresado.length === 0) {
-          dniDisplay.textContent = '';
-          dniDisplay.classList.add('empty');
-          if (btnContinuar) {
-            btnContinuar.disabled = true;
-            btnContinuar.classList.remove('active');
-          }
+          dniDisplay.textContent = ''; dniDisplay.classList.add('empty');
+          if (btnContinuar) { btnContinuar.disabled = true; btnContinuar.classList.remove('active'); }
         } else {
-          // Mostrar el DNI con formato
-          dniDisplay.textContent = dniIngresado;
-          dniDisplay.classList.remove('empty');
-          if (btnContinuar) {
-            btnContinuar.disabled = false;
-            btnContinuar.classList.add('active');
-          }
+          dniDisplay.textContent = dniIngresado; dniDisplay.classList.remove('empty');
+          if (btnContinuar) { btnContinuar.disabled = false; btnContinuar.classList.add('active'); }
         }
         console.log('Display actualizado. DNI:', dniIngresado, 'Texto en display:', dniDisplay.textContent);
       }
-      
-      // Botón continuar - según tipo de atención
+
       btnContinuar.addEventListener('click', () => {
         if (dniIngresado.length === 0) return;
-        
         screenDni.style.display = 'none';
-        
         if (tipoAtencion === 'cita') {
           document.getElementById('dniCitaDisplay').textContent = dniIngresado;
           screenCitaCardiologia.style.display = 'block';
-          prepararPantallaCitasDesdeApi();
         } else if (tipoAtencion === 'demanda') {
           screenDemandaOpciones.style.display = 'block';
         }
       });
-      
-      // Botón Check-in → forma de pago
+
+      // Cita → Check-in directo, encola queue 4218 al llegar a pago
       document.getElementById('btnCheckin').addEventListener('click', () => {
         abrirPantallaPago('cita', null);
       });
 
-      // Consulta API citas al entrar al flujo de citas
-      async function prepararPantallaCitasDesdeApi() {
-        const estado    = document.getElementById('citaEstadoCarga');
-        const detalle   = document.getElementById('citaDetalleAgenda');
-        const btnCheckin = document.getElementById('btnCheckin');
-        const titulo    = document.getElementById('citaTituloPrincipal');
-        if (estado)   { estado.style.display = 'block'; estado.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Consultando agenda…'; }
-        if (detalle)  { detalle.style.display = 'none'; detalle.innerHTML = ''; }
-        if (btnCheckin) btnCheckin.style.display = 'none';
-        if (titulo)   titulo.textContent = 'Sus citas';
-
-        try {
-          const url = new URL(BRILLIANT.citasUrl);
-          url.searchParams.set('agenda_id', String(BRILLIANT.agendaId));
-          url.searchParams.set('branch_id', String(BRILLIANT.branchCentralId));
-          url.searchParams.set('document',  dniIngresado);
-
-          const response = await fetch(url.toString(), {
-            method: 'GET',
-            headers: {
-              'Accept':       'application/json',
-              'Content-Type': 'application/json',
-              'x-api-token':  BRILLIANT.citasToken
-            }
-          });
-          const rawText = await response.text();
-          let data = null;
-          try { data = rawText ? JSON.parse(rawText) : null; }
-          catch (e) { data = { _parseError: String(e), raw: rawText.slice(0, 500) }; }
-
-          if (!response.ok) throw new Error('HTTP ' + response.status);
-
-          if (estado) estado.style.display = 'none';
-          if (detalle) {
-            detalle.style.display = 'block';
-            if (Array.isArray(data) && data.length === 0) {
-              detalle.innerHTML = '<p class="opcion-desc">No hay turnos registrados para este documento.</p>';
-            } else {
-              detalle.innerHTML = '<pre style="text-align:left;font-size:0.75rem;overflow:auto;max-height:200px;">' +
-                escapeHtml(JSON.stringify(data, null, 2).slice(0, 4000)) + '</pre>';
-            }
-          }
-          if (btnCheckin) btnCheckin.style.display = 'block';
-        } catch (err) {
-          console.error('Citas API error:', err);
-          if (estado)  { estado.style.display = 'block'; estado.innerHTML = '<span style="color:#b45309;">No se pudo cargar la agenda.</span> Puede continuar con check-in de demostración.'; }
-          if (detalle) { detalle.style.display = 'block'; detalle.innerHTML = '<p class="opcion-desc">Modo demostración: continúe con check-in.</p>'; }
-          if (btnCheckin) btnCheckin.style.display = 'block';
-        }
-      }
-      
-      // Opciones Demanda espontánea → forma de pago
+      // Demanda → selección de trámite → pago
       document.querySelectorAll('.opcion-demanda').forEach(card => {
         card.addEventListener('click', () => {
-          const tramite = card.getAttribute('data-tramite');
-          abrirPantallaPago('demanda', tramite);
+          abrirPantallaPago('demanda', card.getAttribute('data-tramite'));
         });
       });
-      
-      // Pago con QR: simular QR y a los 5 s ir al paso final
-      const btnPagoQr = document.getElementById('btnPagoQr');
-      const btnPagoCaja = document.getElementById('btnPagoCaja');
-      if (btnPagoQr) {
-        btnPagoQr.addEventListener('click', () => {
-          if (pagoQrTimerId) return;
-          const row = document.getElementById('pagoOpcionesRow');
-          const qr = document.getElementById('pagoQrSimulacion');
-          if (row) row.style.display = 'none';
-          if (qr) qr.style.display = 'block';
-          btnPagoQr.classList.add('disabled');
-          if (btnPagoCaja) btnPagoCaja.classList.add('disabled');
-          pagoQrTimerId = setTimeout(async function () {
-            pagoQrTimerId = null;
-            await cerrarPagoYMostrarConfirmacionFinalQr();
-          }, 5000);
-        });
+
+      // ─── Solicitar atención (Journey Builder) ───────────────────────────────
+
+      async function solicitarAtencionPresencialDirecta() {
+        try {
+          if (pagoQrTimerId) { clearTimeout(pagoQrTimerId); pagoQrTimerId = null; }
+          if (screenPago) { screenPago.style.display = 'none'; resetVistaPago(); }
+          const queueId  = tramiteSeleccionado ? tramiteSeleccionado.queueId  : BRILLIANT.tramites.servicio_cliente.queueId;
+          const branchId = tramiteSeleccionado ? tramiteSeleccionado.branchId : BRILLIANT.branchOficinaVirtualId;
+          const data = await encolarEnFilaVirtual(queueId, branchId);
+          console.log('Respuesta de la API presencial:', data);
+          mostrarPantallaConfirmacionPresencial();
+        } catch (err) {
+          console.error('Error al solicitar atención presencial:', err);
+          alert('Error: ' + err.message);
+        }
       }
-      if (btnPagoCaja) {
-        btnPagoCaja.addEventListener('click', async () => {
-          if (pagoQrTimerId) return;
-          await solicitarAtencionPresencialDirecta();
-        });
+
+      async function solicitarAtencion(tipo) {
+        try {
+          const queueId  = tramiteSeleccionado ? tramiteSeleccionado.queueId  : BRILLIANT.tramites.servicio_cliente.queueId;
+          const branchId = tramiteSeleccionado ? tramiteSeleccionado.branchId : BRILLIANT.branchOficinaVirtualId;
+          const data = await encolarEnFilaVirtual(queueId, branchId);
+          console.log('Respuesta de la API:', data);
+          mostrarPantallaConfirmacion(data, tipo);
+        } catch (err) {
+          console.error('Error al solicitar atención:', err);
+          alert('Error: ' + err.message);
+        }
       }
-      
-      // Mostrar pantalla de opciones (Educación: Matrícula, Certificados, Becas)
+
+      // ─── Confirmaciones ──────────────────────────────────────────────────────
+
+      function mostrarPantallaConfirmacion(data, tipo) {
+        screenOpciones.classList.remove('active');
+        if (screenPago) { screenPago.style.display = 'none'; resetVistaPago(); }
+        screenConfirmacion.classList.add('active');
+        document.getElementById('tiempoEspera').style.display    = 'none';
+        document.getElementById('videoLinkContainer').style.display = 'none';
+        if (data && data.averageWaitingTime !== undefined) {
+          const minutos  = Math.floor(data.averageWaitingTime / 60);
+          const segundos = data.averageWaitingTime % 60;
+          document.getElementById('tiempoEspera').style.display = 'block';
+          document.getElementById('tiempoEsperaValor').textContent = `${minutos} min ${segundos} seg`;
+        }
+        if (tipo === 'videollamada' && data && data.videoCallUrl) {
+          const videoUrl = data.videoCallUrl + (data.videoCallUrl.includes('?') ? '&' : '?') + 'videocallUser=mobile';
+          document.getElementById('videoLinkContainer').style.display = 'block';
+          document.getElementById('btnVideoLink').href = videoUrl;
+        }
+      }
+
+      function mostrarPantallaConfirmacionPresencial() {
+        screenOpciones.classList.remove('active');
+        if (screenPago) { screenPago.style.display = 'none'; resetVistaPago(); }
+        screenConfirmacion.classList.add('active');
+        document.getElementById('tiempoEspera').style.display    = 'none';
+        document.getElementById('videoLinkContainer').style.display = 'none';
+        const title   = screenConfirmacion.querySelector('h2');
+        const message = screenConfirmacion.querySelector('.message');
+        if (title)   title.textContent = 'Tu turno fue asignado';
+        if (message) message.innerHTML = `Lo llamaremos por su DNI: <strong>${dniIngresado}</strong>`;
+      }
+
+      // ─── Journey Builder (legacy) ────────────────────────────────────────────
+
       function mostrarPantallaOpciones() {
         screenDni.style.display = 'none';
         screenOpciones.classList.add('active');
-        
+        const t = screenOpciones.querySelector('h2');
+        const s = screenOpciones.querySelector('.subtitle');
+        if (t) t.textContent = '¿En qué tema de educación podemos ayudarlo?';
+        if (s) s.textContent = 'Seleccione el tema que necesita';
         opcionesGrid.innerHTML = '';
-        
-        // Cambiar el título y subtítulo
-        const screenOpcionesTitle = screenOpciones.querySelector('h2');
-        const screenOpcionesSubtitle = screenOpciones.querySelector('.subtitle');
-        if (screenOpcionesTitle) {
-          screenOpcionesTitle.textContent = '¿En qué tema de educación podemos ayudarlo?';
-        }
-        if (screenOpcionesSubtitle) {
-          screenOpcionesSubtitle.textContent = 'Seleccione el tema que necesita';
-        }
-        
-        // Opción Matrícula e inscripción
-        const cardMatricula = document.createElement('div');
-        cardMatricula.className = 'opcion-card';
-        cardMatricula.style.cssText = 'cursor: pointer; border-color: var(--numia-azul); background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);';
-        cardMatricula.innerHTML = `
-          <div class="opcion-icon" style="color: var(--numia-azul);">
-            <i class="bi bi-journal-bookmark"></i>
-          </div>
-          <div class="opcion-title">Matrícula e inscripción</div>
-        `;
-        cardMatricula.addEventListener('click', async () => {
-          await llamarAgenteConOpcionTotem('matricula');
+        [
+          { key: 'matricula',    icon: 'bi-journal-bookmark',  label: 'Matrícula e inscripción' },
+          { key: 'certificados', icon: 'bi-file-earmark-text', label: 'Certificados y trámites' },
+          { key: 'becas',        icon: 'bi-cash-stack',        label: 'Becas y financiamiento'  }
+        ].forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'opcion-card';
+          card.style.cssText = 'cursor:pointer;border-color:var(--numia-azul);background:linear-gradient(135deg,#f5f3ff 0%,#ede9fe 100%);';
+          card.innerHTML = `<div class="opcion-icon" style="color:var(--numia-azul);"><i class="bi ${item.icon}"></i></div><div class="opcion-title">${item.label}</div>`;
+          card.addEventListener('click', async () => { await llamarAgenteConOpcionTotem(item.key); });
+          opcionesGrid.appendChild(card);
         });
-        opcionesGrid.appendChild(cardMatricula);
-        
-        // Opción Certificados y trámites
-        const cardCertificados = document.createElement('div');
-        cardCertificados.className = 'opcion-card';
-        cardCertificados.style.cssText = 'cursor: pointer; border-color: var(--numia-azul); background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);';
-        cardCertificados.innerHTML = `
-          <div class="opcion-icon" style="color: var(--numia-azul);">
-            <i class="bi bi-file-earmark-text"></i>
-          </div>
-          <div class="opcion-title">Certificados y trámites</div>
-        `;
-        cardCertificados.addEventListener('click', async () => {
-          await llamarAgenteConOpcionTotem('certificados');
-        });
-        opcionesGrid.appendChild(cardCertificados);
-        
-        // Opción Becas y financiamiento
-        const cardBecas = document.createElement('div');
-        cardBecas.className = 'opcion-card';
-        cardBecas.style.cssText = 'cursor: pointer; border-color: var(--numia-azul); background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);';
-        cardBecas.innerHTML = `
-          <div class="opcion-icon" style="color: var(--numia-azul);">
-            <i class="bi bi-cash-stack"></i>
-          </div>
-          <div class="opcion-title">Becas y financiamiento</div>
-        `;
-        cardBecas.addEventListener('click', async () => {
-          await llamarAgenteConOpcionTotem('becas');
-        });
-        opcionesGrid.appendChild(cardBecas);
       }
-      
-      // Mostrar opciones presenciales en el tótem
+
       function mostrarOpcionesPresencialTotem() {
-        const opcionesPresencialContainer = document.getElementById('opcionesPresencialContainerTotem');
-        if (!opcionesPresencialContainer) return;
-        
-        // Si ya está visible, ocultarlo
-        if (opcionesPresencialContainer.style.display === 'block') {
-          opcionesPresencialContainer.style.display = 'none';
-          return;
-        }
-        
-        // Mostrar opciones (Educación)
-        opcionesPresencialContainer.innerHTML = `
-          <div style="width: 100%; max-width: 500px; margin: 0 auto;">
-            <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--numia-text); margin-bottom: 1.5rem; text-align: center;">¿En qué tema de educación podemos ayudarlo?</h3>
-            <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
-              <div class="opcion-card" style="cursor: pointer;" data-opcion="matricula">
-                <div class="opcion-icon" style="color: var(--numia-azul);">
-                  <i class="bi bi-journal-bookmark"></i>
-                </div>
-                <div class="opcion-title">Matrícula e inscripción</div>
-              </div>
-              <div class="opcion-card" style="cursor: pointer;" data-opcion="certificados">
-                <div class="opcion-icon" style="color: var(--numia-azul);">
-                  <i class="bi bi-file-earmark-text"></i>
-                </div>
-                <div class="opcion-title">Certificados y trámites</div>
-              </div>
-              <div class="opcion-card" style="cursor: pointer;" data-opcion="becas">
-                <div class="opcion-icon" style="color: var(--numia-azul);">
-                  <i class="bi bi-cash-stack"></i>
-                </div>
-                <div class="opcion-title">Becas y financiamiento</div>
-              </div>
-            </div>
-          </div>
-        `;
-        opcionesPresencialContainer.style.display = 'block';
-        
-        // Agregar event listeners a las tarjetas
-        const cardsOpcion = opcionesPresencialContainer.querySelectorAll('[data-opcion]');
-        cardsOpcion.forEach(card => {
-          card.addEventListener('click', async () => {
-            const opcion = card.getAttribute('data-opcion');
-            await llamarAgenteConOpcionTotem(opcion);
-          });
+        const c = document.getElementById('opcionesPresencialContainerTotem');
+        if (!c) return;
+        if (c.style.display === 'block') { c.style.display = 'none'; return; }
+        c.innerHTML = `<div style="width:100%;max-width:500px;margin:0 auto;"><h3 style="font-size:1.3rem;font-weight:700;color:var(--numia-text);margin-bottom:1.5rem;text-align:center;">¿En qué tema de educación podemos ayudarlo?</h3><div style="display:grid;grid-template-columns:1fr;gap:1rem;"><div class="opcion-card" style="cursor:pointer;" data-opcion="matricula"><div class="opcion-icon" style="color:var(--numia-azul);"><i class="bi bi-journal-bookmark"></i></div><div class="opcion-title">Matrícula e inscripción</div></div><div class="opcion-card" style="cursor:pointer;" data-opcion="certificados"><div class="opcion-icon" style="color:var(--numia-azul);"><i class="bi bi-file-earmark-text"></i></div><div class="opcion-title">Certificados y trámites</div></div><div class="opcion-card" style="cursor:pointer;" data-opcion="becas"><div class="opcion-icon" style="color:var(--numia-azul);"><i class="bi bi-cash-stack"></i></div><div class="opcion-title">Becas y financiamiento</div></div></div></div>`;
+        c.style.display = 'block';
+        c.querySelectorAll('[data-opcion]').forEach(card => {
+          card.addEventListener('click', async () => { await llamarAgenteConOpcionTotem(card.getAttribute('data-opcion')); });
         });
       }
-      
+
       async function llamarAgenteConOpcionTotem(opcion) {
         try {
           cancelarSimulacionPasosAgente();
-          // Ocultar pantalla de opciones y mostrar loading
           screenOpciones.classList.remove('active');
-          
-          // Mostrar log
-          if (logContainer) {
-            logContainer.classList.add('visible');
-          }
-          
+          if (logContainer) logContainer.classList.add('visible');
           atencionSection.style.display = 'block';
           atencionSection.classList.add('active');
-          stepsContainer.innerHTML = '<div style="color: #ffffff;"><i class="bi bi-hourglass-split me-2"></i>Conectando con el asistente...</div>';
-          
-          // Llamar al agente con el DNI ingresado y la opción seleccionada
-          const mensaje = `Necesito atención sobre ${opcion}. DNI: ${dniIngresado}`;
-          
+          stepsContainer.innerHTML = '<div style="color:#fff;"><i class="bi bi-hourglass-split me-2"></i>Conectando con el asistente...</div>';
+
           const response = await fetch(JOURNEY_API_URL, {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'x-api-key': JOURNEY_API_KEY,
-              'Origin': 'journeybuilder.numia.co'
-            },
-            body: JSON.stringify({
-              input_value: mensaje,
-              input_type: 'chat'
-            })
+            headers: { 'Content-Type': 'application/json', 'x-api-key': JOURNEY_API_KEY, 'Origin': 'journeybuilder.numia.co' },
+            body: JSON.stringify({ input_value: `Necesito atención sobre ${opcion}. DNI: ${dniIngresado}`, input_type: 'chat' })
           });
-          
-          if (!response.ok) {
-            throw new Error(`Error en servidor (${response.status})`);
-          }
-          
+          if (!response.ok) throw new Error(`Error en servidor (${response.status})`);
+
           const data = await response.json();
           console.log('Respuesta completa de la API:', JSON.stringify(data, null, 2));
-          
-          // Procesar respuesta (similar al código existente)
+
           let contents = [];
           let messageText = null;
-          
+
           if (data.outputs && data.outputs.length > 0) {
             const firstOutput = data.outputs[0];
-            
             if (firstOutput.outputs && firstOutput.outputs.length > 0) {
               const innerOutput = firstOutput.outputs[0];
-              
               if (innerOutput.results?.message?.content_blocks) {
                 innerOutput.results.message.content_blocks.forEach((block) => {
                   if (block.contents && Array.isArray(block.contents)) {
                     block.contents.forEach((content) => {
                       if (content.type === 'tool_use' && content.name) {
-                        contents.push({
-                          type: 'tool_use',
-                          name: content.name,
-                          tool_name: content.name,
-                          tool_input: content.tool_input || content.input,
-                          output: content.output,
-                          duration: content.duration
-                        });
+                        contents.push({ type: 'tool_use', name: content.name, tool_name: content.name, tool_input: content.tool_input || content.input, output: content.output, duration: content.duration });
                       }
                     });
                   }
                 });
               }
-              
               if (innerOutput.artifacts?.message) {
-                messageText = typeof innerOutput.artifacts.message === 'string' 
-                  ? innerOutput.artifacts.message 
-                  : innerOutput.artifacts.message.message || JSON.stringify(innerOutput.artifacts.message);
+                messageText = typeof innerOutput.artifacts.message === 'string' ? innerOutput.artifacts.message : innerOutput.artifacts.message.message || JSON.stringify(innerOutput.artifacts.message);
               } else if (innerOutput.outputs?.message?.message) {
                 messageText = innerOutput.outputs.message.message;
               } else if (innerOutput.results?.message?.text) {
@@ -1503,365 +821,99 @@
               }
             }
           }
-          
-          // Mostrar pasos
+
+          const procesarResultado = function(txt) {
+            const scoring   = extraerScoring(txt);
+            const tl        = txt.toLowerCase();
+            const diceNo    = tl.includes('sugerir videollamada: no') || tl.includes('sugerir videollamada:no') ||
+                              tl.includes('**sugerir videollamada:** no') || tl.includes('**sugerir videollamada:**no') ||
+                              (tl.includes('tipo de atención sugerida:') && tl.includes('presencial')) ||
+                              (tl.includes('tipo de atención sugerida') && tl.includes('presencial'));
+            let tieneVideo = false;
+            if (!diceNo) {
+              tieneVideo = tl.includes('- sugerir videollamada: si') || tl.includes('- sugerir videollamada: sí') ||
+                           tl.includes('sugerir videollamada: si') || tl.includes('sugerir videollamada: sí') ||
+                           tl.includes('**sugerir videollamada:** si') || tl.includes('**sugerir videollamada:** sí') ||
+                           tl.includes('**sugerir videollamada:**si') || tl.includes('**sugerir videollamada:**sí') ||
+                           tl.includes('tipo de atención sugerida: videollamada') || tl.includes('tipo de atención sugerida:videollamada');
+            }
+            const recomiendaVideo = tieneVideo || (scoring !== null && scoring > 640);
+            recomendacionVideollamada = recomiendaVideo;
+            console.log('Scoring:', scoring, 'Dice NO:', diceNo, 'Video texto:', tieneVideo, 'Video recomendada:', recomiendaVideo);
+            console.log('Texto debug:', txt.substring(0, 500));
+            setTimeout(() => {
+              if (recomiendaVideo) mostrarOpcionesAtencion();
+              else solicitarAtencionPresencialDirecta();
+            }, 1000);
+          };
+
           if (contents.length > 0) {
             stepsContainer.innerHTML = '';
-            contents.forEach((content, index) => {
-              setTimeout(() => {
-                agregarPaso(content, index);
-              }, index * 800);
-            });
-            
-            if (messageText) {
-              setTimeout(() => {
-                mostrarResumen(messageText);
-                // Extraer Scoring y detectar si recomienda videollamada
-                const scoring = extraerScoring(messageText);
-                const textoLower = messageText.toLowerCase();
-                
-                // Primero verificar si explícitamente dice NO o Presencial
-                const diceNoOPresencial = 
-                  textoLower.includes('sugerir videollamada: no') ||
-                  textoLower.includes('sugerir videollamada:no') ||
-                  textoLower.includes('**sugerir videollamada:** no') ||
-                  textoLower.includes('**sugerir videollamada:**no') ||
-                  (textoLower.includes('tipo de atención sugerida:') && textoLower.includes('presencial')) ||
-                  (textoLower.includes('tipo de atención sugerida') && textoLower.includes('presencial'));
-                
-                // Solo detectar videollamada si NO dice explícitamente NO o Presencial
-                let tieneVideollamadaTexto = false;
-                if (!diceNoOPresencial) {
-                  // Detectar múltiples variaciones del texto de sugerencia de videollamada
-                  tieneVideollamadaTexto = 
-                    // Variaciones con guión y SÍ
-                    textoLower.includes('- sugerir videollamada: si') ||
-                    textoLower.includes('- sugerir videollamada: sí') ||
-                    textoLower.includes('sugerir videollamada: si') ||
-                    textoLower.includes('sugerir videollamada: sí') ||
-                    // Variaciones con asteriscos (markdown) y SÍ
-                    textoLower.includes('**sugerir videollamada:** si') ||
-                    textoLower.includes('**sugerir videollamada:** sí') ||
-                    textoLower.includes('**sugerir videollamada:**si') ||
-                    textoLower.includes('**sugerir videollamada:**sí') ||
-                    // Detectar "Tipo de atención sugerida: Videollamada" (debe estar juntos)
-                    textoLower.includes('tipo de atención sugerida: videollamada') ||
-                    textoLower.includes('tipo de atención sugerida:videollamada');
-                }
-                
-                // Mostrar videollamada si el texto lo sugiere O si el Scoring > 640 (estricto, no >=)
-                const tieneVideollamada = tieneVideollamadaTexto || (scoring !== null && scoring > 640);
-                recomendacionVideollamada = tieneVideollamada;
-                console.log('Scoring extraído:', scoring, 'Dice NO/Presencial:', diceNoOPresencial, 'Videollamada por texto:', tieneVideollamadaTexto, 'Videollamada recomendada:', tieneVideollamada);
-                console.log('Texto completo para debugging:', messageText.substring(0, 500));
-                // Mostrar opciones de videollamada/presencial después del análisis o confirmación directa
-                setTimeout(() => {
-                  if (tieneVideollamada) {
-                    mostrarOpcionesAtencion();
-                  } else {
-                    // Si no hay recomendación de videollamada, solicitar atención presencial directamente
-                    solicitarAtencionPresencialDirecta();
-                  }
-                }, 1000);
-              }, contents.length * 800 + 500);
-            }
-          } else {
-            if (messageText) {
-              mostrarResumen(messageText);
-              // Extraer Scoring y detectar si recomienda videollamada
-              const scoring = extraerScoring(messageText);
-              const textoLower = messageText.toLowerCase();
-              // Detectar múltiples variaciones del texto de sugerencia de videollamada
-              const tieneVideollamadaTexto = 
-                // Variaciones con guión
-                textoLower.includes('- sugerir videollamada: si') ||
-                textoLower.includes('- sugerir videollamada: sí') ||
-                textoLower.includes('sugerir videollamada: si') ||
-                textoLower.includes('sugerir videollamada: sí') ||
-                // Variaciones con asteriscos (markdown)
-                textoLower.includes('**sugerir videollamada:** si') ||
-                textoLower.includes('**sugerir videollamada:** sí') ||
-                textoLower.includes('**sugerir videollamada:**si') ||
-                textoLower.includes('**sugerir videollamada:**sí') ||
-                // Detectar "Tipo de atención sugerida: Videollamada"
-                (textoLower.includes('tipo de atención sugerida') && textoLower.includes('videollamada')) ||
-                (textoLower.includes('tipo de atención sugerida:') && textoLower.includes('videollamada'));
-              // Mostrar videollamada si el texto lo sugiere O si el Scoring > 640
-              const tieneVideollamada = tieneVideollamadaTexto || (scoring !== null && scoring > 640);
-              recomendacionVideollamada = tieneVideollamada;
-              console.log('Scoring extraído:', scoring, 'Videollamada recomendada:', tieneVideollamada);
-              // Mostrar opciones de videollamada/presencial después del análisis o confirmación directa
-              setTimeout(() => {
-                if (tieneVideollamada) {
-                  mostrarOpcionesAtencion();
-                } else {
-                  // Si no hay recomendación de videollamada, solicitar atención presencial directamente
-                  solicitarAtencionPresencialDirecta();
-                }
-              }, 1000);
-            }
+            contents.forEach((content, index) => { setTimeout(() => { agregarPaso(content, index); }, index * 800); });
+            if (messageText) setTimeout(() => { mostrarResumen(messageText); procesarResultado(messageText); }, contents.length * 800 + 500);
+          } else if (messageText) {
+            mostrarResumen(messageText);
+            procesarResultado(messageText);
           }
-          
+
         } catch (err) {
           console.error('Error al llamar al agente:', err);
-          stepsContainer.innerHTML = `<div style="color: #ff8888;"><i class="bi bi-exclamation-triangle me-2"></i>Error: ${err.message}</div>`;
+          stepsContainer.innerHTML = `<div style="color:#ff8888;"><i class="bi bi-exclamation-triangle me-2"></i>Error: ${err.message}</div>`;
         }
       }
-      
-      // Mostrar opciones de atención (videollamada/presencial) después del análisis
+
       function mostrarOpcionesAtencion() {
         screenOpciones.classList.add('active');
-        
-        // Cambiar el título y subtítulo
-        const screenOpcionesTitle = screenOpciones.querySelector('h2');
-        const screenOpcionesSubtitle = screenOpciones.querySelector('.subtitle');
-        if (screenOpcionesTitle) {
-          screenOpcionesTitle.textContent = 'Seleccione su preferencia';
-        }
-        if (screenOpcionesSubtitle) {
-          screenOpcionesSubtitle.textContent = 'Elija cómo desea ser atendido';
-        }
-        
+        const t = screenOpciones.querySelector('h2');
+        const s = screenOpciones.querySelector('.subtitle');
+        if (t) t.textContent = 'Seleccione su preferencia';
+        if (s) s.textContent = 'Elija cómo desea ser atendido';
         opcionesGrid.innerHTML = '';
-        
-        // Opción Videollamada (solo se muestra si está recomendada - esta función solo se llama cuando lo está)
         if (recomendacionVideollamada) {
-          const cardVideo = document.createElement('div');
-          cardVideo.className = 'opcion-card videollamada';
-          cardVideo.innerHTML = `
-            <div class="opcion-icon">
-              <i class="bi bi-camera-video"></i>
-            </div>
-            <div class="opcion-title">Videollamada</div>
-            <div class="opcion-badge">Menos espera</div>
-            <div class="opcion-desc">Atención inmediata desde donde estés</div>
-          `;
-          cardVideo.addEventListener('click', () => solicitarAtencion('videollamada'));
-          opcionesGrid.appendChild(cardVideo);
+          const cv = document.createElement('div');
+          cv.className = 'opcion-card videollamada';
+          cv.innerHTML = `<div class="opcion-icon"><i class="bi bi-camera-video"></i></div><div class="opcion-title">Videollamada</div><div class="opcion-badge">Menos espera</div><div class="opcion-desc">Atención inmediata desde donde estés</div>`;
+          cv.addEventListener('click', () => solicitarAtencion('videollamada'));
+          opcionesGrid.appendChild(cv);
         }
-        
-        // Opción Presencial (siempre disponible, menos recomendada si hay videollamada)
-        const cardPresencial = document.createElement('div');
-        cardPresencial.className = 'opcion-card presencial';
-        if (recomendacionVideollamada) {
-          cardPresencial.innerHTML = `
-            <div class="opcion-icon">
-              <i class="bi bi-geo-alt"></i>
-            </div>
-            <div class="opcion-title">Continuar presencial</div>
-            <div class="opcion-badge less-recommended">Opción menos recomendada</div>
-            <div class="opcion-desc">Atención en sucursal</div>
-          `;
-        } else {
-          cardPresencial.innerHTML = `
-            <div class="opcion-icon">
-              <i class="bi bi-geo-alt"></i>
-            </div>
-            <div class="opcion-title">Continuar presencial</div>
-            <div class="opcion-desc">Atención en sucursal</div>
-          `;
-        }
-        cardPresencial.addEventListener('click', () => solicitarAtencion('presencial'));
-        opcionesGrid.appendChild(cardPresencial);
+        const cp = document.createElement('div');
+        cp.className = 'opcion-card presencial';
+        cp.innerHTML = `<div class="opcion-icon"><i class="bi bi-geo-alt"></i></div><div class="opcion-title">Continuar presencial</div>${recomendacionVideollamada ? '<div class="opcion-badge less-recommended">Opción menos recomendada</div>' : ''}<div class="opcion-desc">Atención en sucursal</div>`;
+        cp.addEventListener('click', () => solicitarAtencion('presencial'));
+        opcionesGrid.appendChild(cp);
       }
-      
-      // Solicitar atención presencial directamente (pago en caja o sin recomendación de videollamada)
-      async function solicitarAtencionPresencialDirecta() {
-        try {
-          if (pagoQrTimerId) { clearTimeout(pagoQrTimerId); pagoQrTimerId = null; }
-          if (screenPago) { screenPago.style.display = 'none'; resetVistaPago(); }
 
-          const queueId  = tramiteSeleccionado ? tramiteSeleccionado.queueId  : BRILLIANT.tramites.servicio_cliente.queueId;
-          const branchId = tramiteSeleccionado ? tramiteSeleccionado.branchId : String(BRILLIANT.branchOficinaVirtualId);
-          const apiUrl   = BRILLIANT.filavirtualBase + '/api/v1/queue/' + queueId + '/branch/' + branchId + '/enqueue';
+      // ─── Auxiliares ──────────────────────────────────────────────────────────
 
-          const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'x-api-token': BRILLIANT.filavirtualToken
-            },
-            body: JSON.stringify({
-              firstName: 'Jorge',
-              lastName:  'Macera',
-              dni:       dniIngresado,
-              email:     'mail@mail.com',
-              phone:     '12345678'
-            })
-          });
-
-          if (!response.ok) throw new Error(`Error en servidor (${response.status})`);
-          const data = await response.json();
-          console.log('Respuesta de la API presencial:', data);
-          mostrarPantallaConfirmacionPresencial();
-        } catch (err) {
-          console.error('Error al solicitar atención presencial:', err);
-          alert(`Error: ${err.message}`);
-        }
-      }
-      
-      // Solicitar atención (videollamada o presencial tras Journey Builder)
-      async function solicitarAtencion(tipo) {
-        try {
-          const queueId  = tramiteSeleccionado ? tramiteSeleccionado.queueId : BRILLIANT.tramites.servicio_cliente.queueId;
-          const branchId = tramiteSeleccionado ? tramiteSeleccionado.branchId : String(BRILLIANT.branchOficinaVirtualId);
-          const apiUrl   = BRILLIANT.filavirtualBase + '/api/v1/queue/' + queueId + '/branch/' + branchId + '/enqueue';
-
-          const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'x-api-token': BRILLIANT.filavirtualToken
-            },
-            body: JSON.stringify({
-              firstName: 'Jorge',
-              lastName:  'Macera',
-              dni:       dniIngresado,
-              email:     'mail@mail.com',
-              phone:     '12345678'
-            })
-          });
-
-          if (!response.ok) throw new Error(`Error en servidor (${response.status})`);
-          const data = await response.json();
-          console.log('Respuesta de la API:', data);
-          mostrarPantallaConfirmacion(data, tipo);
-        } catch (err) {
-          console.error('Error al solicitar atención:', err);
-          alert(`Error: ${err.message}`);
-        }
-      }
-      
-      // Mostrar pantalla de confirmación
-      function mostrarPantallaConfirmacion(data, tipo) {
-        screenOpciones.classList.remove('active');
-        if (screenPago) {
-          screenPago.style.display = 'none';
-          resetVistaPago();
-        }
-        screenConfirmacion.classList.add('active');
-        
-        // Ocultar elementos que no aplican si no hay data
-        document.getElementById('tiempoEspera').style.display = 'none';
-        document.getElementById('videoLinkContainer').style.display = 'none';
-        
-        // Mostrar tiempo de espera solo si hay data
-        if (data && data.averageWaitingTime !== undefined) {
-          const minutos = Math.floor(data.averageWaitingTime / 60);
-          const segundos = data.averageWaitingTime % 60;
-          document.getElementById('tiempoEspera').style.display = 'block';
-          document.getElementById('tiempoEsperaValor').textContent = `${minutos} min ${segundos} seg`;
-        }
-        
-        // Mostrar enlace de videollamada si aplica
-        if (tipo === 'videollamada' && data && data.videoCallUrl) {
-          const videoUrl = data.videoCallUrl + (data.videoCallUrl.includes('?') ? '&' : '?') + 'videocallUser=mobile';
-          document.getElementById('videoLinkContainer').style.display = 'block';
-          document.getElementById('btnVideoLink').href = videoUrl;
-        }
-      }
-      
-      // Mostrar pantalla de confirmación presencial (cuando no hay videollamada recomendada)
-      function mostrarPantallaConfirmacionPresencial() {
-        screenOpciones.classList.remove('active');
-        if (screenPago) {
-          screenPago.style.display = 'none';
-          resetVistaPago();
-        }
-        screenConfirmacion.classList.add('active');
-        
-        // Ocultar elementos que no aplican
-        document.getElementById('tiempoEspera').style.display = 'none';
-        document.getElementById('videoLinkContainer').style.display = 'none';
-        
-        // Actualizar el mensaje de confirmación
-        const confirmacionTitle = screenConfirmacion.querySelector('h2');
-        const confirmacionMessage = screenConfirmacion.querySelector('.message');
-        
-        if (confirmacionTitle) {
-          confirmacionTitle.textContent = 'Tu turno fue asignado';
-        }
-        
-        if (confirmacionMessage) {
-          confirmacionMessage.innerHTML = `
-            Lo llamaremos por su DNI: <strong>${dniIngresado}</strong>
-          `;
-        }
-      }
-      
-      // Función para extraer el Scoring del mensaje
       function extraerScoring(texto) {
         if (!texto) return null;
-        
-        // Buscar patrones como "Scoring: 640", "Scoring:640", "scoring: 640", etc.
-        const patrones = [
-          /Scoring:\s*(\d+)/i,
-          /Scoring\s*:\s*(\d+)/i,
-          /score\s*:\s*(\d+)/i
-        ];
-        
-        for (const patron of patrones) {
-          const match = texto.match(patron);
-          if (match && match[1]) {
-            const scoring = parseInt(match[1], 10);
-            if (!isNaN(scoring)) {
-              return scoring;
-            }
-          }
+        for (const p of [/Scoring:\s*(\d+)/i, /Scoring\s*:\s*(\d+)/i, /score\s*:\s*(\d+)/i]) {
+          const m = texto.match(p);
+          if (m && m[1]) { const s = parseInt(m[1], 10); if (!isNaN(s)) return s; }
         }
-        
         return null;
       }
-      
-      // Funciones auxiliares (copiadas de app-cliente.html)
+
       function agregarPaso(content, index) {
         try {
           const stepItem = document.createElement('div');
           stepItem.className = 'step-item processing';
-          
           const toolName = content.name || content.tool_name || 'Herramienta desconocida';
-          const friendlyName = toolName
-            .replace(/([A-Z])/g, ' $1')
-            .replace(/^./, str => str.toUpperCase())
-            .trim()
-            .replace(/\b\w/g, l => l.toUpperCase());
-          
-          stepItem.innerHTML = `
-            <div class="step-title">${escapeHtml(friendlyName)}</div>
-            <div class="step-output-content">
-              <em style="color: #ffffff;">Herramienta ejecutada correctamente</em>
-            </div>
-          `;
-          
+          const friendly = toolName.replace(/([A-Z])/g,' $1').replace(/^./,s=>s.toUpperCase()).trim().replace(/\b\w/g,l=>l.toUpperCase());
+          stepItem.innerHTML = `<div class="step-title">${escapeHtml(friendly)}</div><div class="step-output-content"><em style="color:#fff;">Herramienta ejecutada correctamente</em></div>`;
           stepsContainer.appendChild(stepItem);
-          
-          setTimeout(() => {
-            stepItem.classList.remove('processing');
-            stepItem.classList.add('completed');
-          }, 600);
-          
-        } catch (err) {
-          console.error('Error al agregar paso:', err);
-        }
+          setTimeout(() => { stepItem.classList.remove('processing'); stepItem.classList.add('completed'); }, 600);
+        } catch (err) { console.error('Error al agregar paso:', err); }
       }
-      
+
       function mostrarResumen(message) {
         try {
-          const messageText = typeof message === 'string' ? message : (message.message || JSON.stringify(message, null, 2));
-          summaryContent.textContent = messageText;
+          summaryContent.textContent = typeof message === 'string' ? message : (message.message || JSON.stringify(message, null, 2));
           summarySection.style.display = 'block';
-        } catch (err) {
-          console.error('Error al mostrar resumen:', err);
-        }
+        } catch (err) { console.error('Error al mostrar resumen:', err); }
       }
-      
-      function escapeHtml(text) {
-        if (!text) return '';
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-      }
-    });
+
+    }); // end DOMContentLoaded
   </script>
 </body>
 </html>
