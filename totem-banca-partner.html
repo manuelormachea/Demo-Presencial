@@ -249,6 +249,36 @@
     .agent-conclusions-title { font-weight: 700; margin-bottom: 0.5rem; color: #e8e8e8; }
     .agent-conclusions-text { margin: 0; line-height: 1.5; white-space: pre-wrap; }
 
+    /* Pantalla QR de pago (videollamada) */
+    .screen-pago-qr {
+      width: 100%; max-width: 500px;
+      text-align: center; display: none;
+      flex-direction: column; align-items: center; gap: 1rem; padding: 1rem 0;
+    }
+    .screen-pago-qr.active { display: flex; }
+    .screen-pago-qr h2 { font-size: 1.4rem; font-weight: 700; color: var(--numia-text); }
+    .screen-pago-qr .subtitle { font-size: 0.9rem; color: var(--numia-text-light); }
+    .qr-wrap {
+      background: #fff; border-radius: 16px;
+      padding: 1.25rem; display: inline-block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .qr-wrap img { display: block; width: 200px; height: 200px; }
+    .qr-processing { font-size: 0.85rem; color: var(--numia-text-light); display: flex; align-items: center; gap: 0.4rem; }
+
+    /* Pantalla forma de pago (presencial) */
+    .screen-forma-pago {
+      width: 100%; max-width: 500px;
+      text-align: center; display: none;
+    }
+    .screen-forma-pago.active { display: block; }
+    .screen-forma-pago h2 { font-size: 1.4rem; font-weight: 700; color: var(--numia-text); margin-bottom: 0.4rem; }
+    .screen-forma-pago .subtitle { font-size: 0.9rem; color: var(--numia-text-light); margin-bottom: 1rem; }
+    .opcion-card.pago-qr  { border-color: #0d9488; background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); }
+    .opcion-card.pago-qr:hover  { box-shadow: 0 8px 24px rgba(13,148,136,0.3); }
+    .opcion-card.pago-caja { border-color: var(--numia-azul); background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); }
+    .opcion-card.pago-caja:hover { box-shadow: 0 8px 24px rgba(134,61,255,0.3); }
+
     @media (max-width: 1024px) {
       body { flex-direction: column; padding: 1rem; }
       .totem-container { max-width: 100%; height: 50vh; }
@@ -378,6 +408,36 @@
         </div>
       </div>
 
+      <!-- P7: QR de pago (solo para videollamada) -->
+      <div class="screen-pago-qr" id="screenPagoQr">
+        <h2>Pago con QR</h2>
+        <div class="subtitle">Escaneá el código con tu billetera o banca móvil</div>
+        <div class="qr-wrap">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=NUMIA-BANCA-PAGO-DEMO" alt="QR de pago" />
+        </div>
+        <div class="qr-processing">
+          <i class="bi bi-hourglass-split"></i> Procesando pago… por favor espere
+        </div>
+      </div>
+
+      <!-- P8: Forma de pago (solo para presencial) -->
+      <div class="screen-forma-pago" id="screenFormaPago">
+        <h2>Forma de pago</h2>
+        <div class="subtitle">Seleccione cómo desea abonar</div>
+        <div class="opciones-grid" style="grid-template-columns: 1fr 1fr;">
+          <div class="opcion-card pago-qr" id="btnFormaPagoQr">
+            <div class="opcion-icon" style="color:#0d9488;"><i class="bi bi-qr-code"></i></div>
+            <div class="opcion-title">Pago con QR</div>
+            <div class="opcion-desc">Abone con su billetera o banca móvil</div>
+          </div>
+          <div class="opcion-card pago-caja" id="btnFormaPagoCaja">
+            <div class="opcion-icon" style="color:var(--numia-azul);"><i class="bi bi-cash-coin"></i></div>
+            <div class="opcion-title">Pago en caja</div>
+            <div class="opcion-desc">Diríjase a la ventanilla de caja</div>
+          </div>
+        </div>
+      </div>
+
     </div><!-- /totem-content -->
   </div><!-- /totem-container -->
 
@@ -458,6 +518,8 @@
     var screenCita            = document.getElementById('screenCita');
     var screenAnalizando      = document.getElementById('screenAnalizando');
     var screenEleccion        = document.getElementById('screenEleccion');
+    var screenPagoQr          = document.getElementById('screenPagoQr');
+    var screenFormaPago       = document.getElementById('screenFormaPago');
     var screenConfirmacion    = document.getElementById('screenConfirmacion');
     var dniDisplay            = document.getElementById('dniDisplay');
     var btnContinuar          = document.getElementById('btnContinuar');
@@ -482,6 +544,8 @@
       screenCita.style.display            = 'none';
       screenAnalizando.classList.remove('active');
       screenEleccion.style.display        = 'none';
+      screenPagoQr.classList.remove('active');
+      screenFormaPago.classList.remove('active');
       screenConfirmacion.classList.remove('active');
     }
 
@@ -623,9 +687,8 @@
       cardVid.innerHTML =
         '<div class="opcion-icon"><i class="bi bi-camera-video"></i></div>' +
         '<div class="opcion-title">Videollamada</div>' +
-        '<div class="opcion-badge">✅ Recomendado</div>' +
-        '<div class="opcion-desc">Atención inmediata desde donde estés</div>' +
-        '<div class="opcion-wait fast"><i class="bi bi-clock me-1"></i>Espera estimada: ' + TIEMPO_ESPERA_VIDEOLLAMADA + '</div>';
+        '<div class="opcion-badge">✅ Menos espera</div>' +
+        '<div class="opcion-desc">Atención inmediata desde donde estés</div>';
       cardVid.addEventListener('click', function(){ encolarYConfirmar('videollamada'); });
       eleccionGrid.appendChild(cardVid);
 
@@ -635,14 +698,15 @@
       cardPres.innerHTML =
         '<div class="opcion-icon"><i class="bi bi-geo-alt"></i></div>' +
         '<div class="opcion-title">Atención presencial</div>' +
-        '<div class="opcion-badge less-recommended">⚠️ Mayor espera</div>' +
-        '<div class="opcion-desc">Atención en sucursal — alta demanda</div>' +
-        '<div class="opcion-wait slow"><i class="bi bi-clock me-1"></i>Espera estimada: ' + TIEMPO_ESPERA_PRESENCIAL + '</div>';
+        '<div class="opcion-badge less-recommended">⚠️ Opción menos recomendada</div>' +
+        '<div class="opcion-desc">Atención en sucursal — alta demanda</div>';
       cardPres.addEventListener('click', function(){ encolarYConfirmar('presencial'); });
       eleccionGrid.appendChild(cardPres);
     }
 
     // ── ENQUEUE FILA VIRTUAL ──────────────────────────────────────────────────
+    var qrPagoTimerId = null;
+
     async function encolarYConfirmar(tipo) {
       try {
         var cfg = getFvConfig(tipo);
@@ -655,7 +719,27 @@
         var data = {};
         try { data = await res.json(); } catch(e) {}
         if (!res.ok) throw new Error(data.message || 'Error en servidor (' + res.status + ')');
-        mostrarConfirmacion(data, tipo);
+
+        // Encole exitoso → mostrar pantalla de pago según canal
+        ocultarTodo();
+        if (tipo === 'videollamada') {
+          // Mostrar QR y en 5s ir a confirmación
+          screenPagoQr.classList.add('active');
+          qrPagoTimerId = setTimeout(function() {
+            qrPagoTimerId = null;
+            mostrarConfirmacion(data, tipo);
+          }, 5000);
+        } else {
+          // Mostrar opciones de forma de pago (solo visual)
+          screenFormaPago.classList.add('active');
+          // Ambos botones llevan a confirmación — el canal ya está encolado
+          document.getElementById('btnFormaPagoQr').onclick = function() {
+            mostrarConfirmacion(data, tipo);
+          };
+          document.getElementById('btnFormaPagoCaja').onclick = function() {
+            mostrarConfirmacion(data, tipo);
+          };
+        }
       } catch(err) {
         console.error('Error al encolar:', err);
         alert('Error: ' + err.message);
