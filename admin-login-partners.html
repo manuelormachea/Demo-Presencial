@@ -93,11 +93,11 @@
     </div>
   </div>
 
-  <script src="auth-portal.js"></script>
+  <script src="auth-portal-partners.js"></script>
   <script>
     (function () {
       if (AuthPortal.isAdminAuthenticated()) {
-        window.location.replace('admin.html');
+        window.location.replace('admin-partners.html');
         return;
       }
 
@@ -109,7 +109,7 @@
         err.classList.add('d-none');
 
         if (AuthPortal.adminLogin(email, pwd)) {
-          window.location.replace('admin.html');
+          window.location.replace('admin-partners.html');
         } else {
           err.textContent = 'Credenciales incorrectas.';
           err.classList.remove('d-none');
