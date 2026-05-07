@@ -104,17 +104,17 @@
       margin: 0;
       color: var(--numia-azul-oscuro);
     }
-    .btn-clear {
+    .btn-refresh {
       font-size: 0.78rem;
       padding: 0.3rem 0.9rem;
       border-radius: 8px;
-      border: 1px solid #e5e7eb;
+      border: 1px solid #863DFF;
       background: #fff;
-      color: #6b7280;
+      color: #863DFF;
       cursor: pointer;
       transition: all 0.2s;
     }
-    .btn-clear:hover { background: #fee2e2; border-color: #fca5a5; color: #dc2626; }
+    .btn-refresh:hover { background: #f5f0ff; }
 
     table { width: 100%; border-collapse: collapse; }
     thead th {
@@ -168,6 +168,15 @@
     }
     .empty-state i { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
     .ts { font-size: 0.78rem; color: #9ca3af; }
+    .loading { text-align: center; padding: 3rem; color: #9ca3af; }
+    .loading i { font-size: 2rem; display: block; margin-bottom: 0.5rem; animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error-box {
+      background: #fef2f2; border: 1px solid #fecaca;
+      color: #dc2626; border-radius: 10px;
+      padding: 1rem 1.2rem; margin: 1rem;
+      font-size: 0.85rem;
+    }
   </style>
 </head>
 <body>
@@ -184,8 +193,7 @@
   </div>
 
   <div class="main">
-    <!-- Stat cards -->
-    <div class="stat-cards" id="statCards">
+    <div class="stat-cards">
       <div class="stat-card">
         <div class="label">Usuarios únicos</div>
         <div class="value accent" id="statUnicos">—</div>
@@ -200,21 +208,24 @@
       </div>
     </div>
 
-    <!-- Tabla -->
     <div class="table-card">
       <div class="table-card-header">
         <h2><i class="bi bi-list-ol me-2"></i>Accesos por usuario</h2>
-        <button class="btn-clear" id="btnClear">
-          <i class="bi bi-trash me-1"></i>Limpiar registros
+        <button class="btn-refresh" id="btnRefresh">
+          <i class="bi bi-arrow-clockwise me-1"></i>Actualizar
         </button>
       </div>
-      <div id="tableWrap"></div>
+      <div id="tableWrap">
+        <div class="loading"><i class="bi bi-arrow-repeat"></i>Cargando registros…</div>
+      </div>
     </div>
   </div>
 
   <script src="auth-portal-partners.js"></script>
   <script>
     (function () {
+
+      var SHEET_URL = 'https://script.google.com/a/macros/numia.co/s/AKfycbxJ8QAIZtZUD88k_4L00dhsukOCvgbXT0-rpbGLsMeAyRXeIrDlam4uN7PA0VSAP0D6/exec';
 
       AuthPortal.requireAdmin();
 
@@ -232,16 +243,27 @@
         return '';
       }
 
-      function render() {
-        var log = AuthPortal.getLog(); // ya viene ordenado desc por count
+      function aggregate(rows) {
+        // rows: array of { email, ts }
+        var map = {};
+        rows.forEach(function (r) {
+          if (!r.email) return;
+          if (!map[r.email]) {
+            map[r.email] = { email: r.email, count: 0, firstSeen: r.ts, lastSeen: r.ts };
+          }
+          map[r.email].count += 1;
+          if (r.ts < map[r.email].firstSeen) map[r.email].firstSeen = r.ts;
+          if (r.ts > map[r.email].lastSeen)  map[r.email].lastSeen  = r.ts;
+        });
+        return Object.values(map).sort(function (a, b) { return b.count - a.count; });
+      }
 
-        /* Stats */
-        var total = log.reduce(function (s, e) { return s + e.count; }, 0);
+      function render(log) {
         document.getElementById('statUnicos').textContent = log.length;
+        var total = log.reduce(function (s, e) { return s + e.count; }, 0);
         document.getElementById('statTotal').textContent  = total;
         document.getElementById('statTop').textContent    = log.length ? log[0].email.split('@')[0] : '—';
 
-        /* Tabla */
         var wrap = document.getElementById('tableWrap');
         if (!log.length) {
           wrap.innerHTML = '<div class="empty-state"><i class="bi bi-inbox"></i>Sin registros todavía.</div>';
@@ -268,19 +290,33 @@
           + '</table>';
       }
 
+      function load() {
+        document.getElementById('tableWrap').innerHTML =
+          '<div class="loading"><i class="bi bi-arrow-repeat"></i>Cargando registros…</div>';
+
+        fetch(SHEET_URL + '?action=read')
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            // data esperado: [{ email, ts }, ...]
+            var rows = Array.isArray(data) ? data : (data.rows || []);
+            render(aggregate(rows));
+          })
+          .catch(function (err) {
+            document.getElementById('tableWrap').innerHTML =
+              '<div class="error-box"><i class="bi bi-exclamation-triangle me-2"></i>'
+              + 'Error al cargar los registros. Verificá que el Apps Script esté publicado correctamente.'
+              + '</div>';
+          });
+      }
+
       document.getElementById('btnLogout').addEventListener('click', function () {
         AuthPortal.adminLogout();
         window.location.replace('admin-login-partners.html');
       });
 
-      document.getElementById('btnClear').addEventListener('click', function () {
-        if (confirm('¿Limpiar todos los registros? Esta acción no se puede deshacer.')) {
-          AuthPortal.clearLog();
-          render();
-        }
-      });
+      document.getElementById('btnRefresh').addEventListener('click', load);
 
-      render();
+      load();
     })();
   </script>
 </body>
