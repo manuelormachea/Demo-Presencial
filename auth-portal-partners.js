@@ -1,20 +1,20 @@
 /**
  * Auth demo unificado — Numia
  * Valida credenciales contra la API de DebMedia.
- * Registra accesos exitosos en localStorage (visible solo en admin-partners.html).
+ * Registra accesos en Google Sheets (centralizado, todos los usuarios).
  * Solo apto para demos estáticas, no seguridad real.
  */
 (function (global) {
 
-  var STORAGE_KEY     = 'numiaPortalDemoAuth';
-  var LOG_KEY         = 'numiaPortalAccessLog';
-  var SESSION_MAX_MS  = 12 * 60 * 60 * 1000; // 12 horas
-  var AUTH_API_URL    = 'https://debq2.debmedia.com/api/authenticate';
+  var STORAGE_KEY    = 'numiaPortalDemoAuth';
+  var SESSION_MAX_MS = 12 * 60 * 60 * 1000; // 12 horas
+  var AUTH_API_URL   = 'https://debq2.debmedia.com/api/authenticate';
+  var SHEET_URL      = 'https://script.google.com/a/macros/numia.co/s/AKfycbxJ8QAIZtZUD88k_4L00dhsukOCvgbXT0-rpbGLsMeAyRXeIrDlam4uN7PA0VSAP0D6/exec';
 
   /* ── Admin credentials (solo para admin-partners.html) ── */
-  var ADMIN_EMAIL     = 'jmacera.root@numia.co';
-  var ADMIN_PASSWORD  = 'Registros$2026';
-  var ADMIN_KEY       = 'numiaAdminAuth';
+  var ADMIN_EMAIL    = 'jmacera.root@numia.co';
+  var ADMIN_PASSWORD = 'Registros$2026';
+  var ADMIN_KEY      = 'numiaAdminAuth';
 
   /* ────────────────────────────────────────────── */
   /*  Sesión de usuario                             */
@@ -41,8 +41,8 @@
   }
 
   /**
-   * Llama a la API. Devuelve Promise<boolean>.
-   * Si tiene éxito guarda sesión y registra el acceso.
+   * Llama a la API de DebMedia. Devuelve Promise<boolean>.
+   * Si tiene éxito guarda sesión y registra el acceso en Google Sheets.
    */
   function login(email, password) {
     return fetch(AUTH_API_URL, {
@@ -71,41 +71,24 @@
   }
 
   /* ────────────────────────────────────────────── */
-  /*  Registro de accesos (localStorage)            */
+  /*  Registro centralizado → Google Sheets         */
   /* ────────────────────────────────────────────── */
 
-  function readLog() {
-    try {
-      var raw = localStorage.getItem(LOG_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch (e) {
-      return [];
-    }
-  }
-
   function recordAccess(email) {
-    var log = readLog();
-    var entry = log.find(function (e) { return e.email === email; });
-    var now = new Date().toISOString();
-    if (entry) {
-      entry.count += 1;
-      entry.lastSeen = now;
-    } else {
-      log.push({ email: email, count: 1, firstSeen: now, lastSeen: now });
-    }
     try {
-      localStorage.setItem(LOG_KEY, JSON.stringify(log));
-    } catch (e) {}
-  }
-
-  function getLog() {
-    return readLog()
-      .slice()
-      .sort(function (a, b) { return b.count - a.count; });
-  }
-
-  function clearLog() {
-    localStorage.removeItem(LOG_KEY);
+      fetch(SHEET_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({
+          email: email,
+          action: 'login',
+          ts: new Date().toISOString()
+        }),
+        mode: 'no-cors'
+      });
+    } catch (e) {
+      // silencioso — no interrumpir el flujo de login
+    }
   }
 
   /* ────────────────────────────────────────────── */
@@ -163,17 +146,15 @@
   /* ────────────────────────────────────────────── */
 
   global.AuthPortal = {
-    isAuthenticated:    isAuthenticated,
-    login:              login,
-    logout:             logout,
-    require:            require,
-    safeNextUrl:        safeNextUrl,
-    getLog:             getLog,
-    clearLog:           clearLog,
-    adminLogin:         adminLogin,
+    isAuthenticated:      isAuthenticated,
+    login:                login,
+    logout:               logout,
+    require:              require,
+    safeNextUrl:          safeNextUrl,
+    adminLogin:           adminLogin,
     isAdminAuthenticated: isAdminAuthenticated,
-    adminLogout:        adminLogout,
-    requireAdmin:       requireAdmin
+    adminLogout:          adminLogout,
+    requireAdmin:         requireAdmin
   };
 
 })(typeof window !== 'undefined' ? window : globalThis);
