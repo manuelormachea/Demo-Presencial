@@ -1,7 +1,7 @@
 /**
  * Auth demo unificado — Numia
  * Valida credenciales contra la API de DebMedia.
- * Registra accesos exitosos en localStorage (visible solo en admin.html).
+ * Registra accesos exitosos en localStorage (visible solo en admin-partners.html).
  * Solo apto para demos estáticas, no seguridad real.
  */
 (function (global) {
@@ -11,7 +11,7 @@
   var SESSION_MAX_MS  = 12 * 60 * 60 * 1000; // 12 horas
   var AUTH_API_URL    = 'https://debq2.debmedia.com/api/authenticate';
 
-  /* ── Admin credentials (solo para admin.html) ── */
+  /* ── Admin credentials (solo para admin-partners.html) ── */
   var ADMIN_EMAIL     = 'jmacera.root@numia.co';
   var ADMIN_PASSWORD  = 'Registros$2026';
   var ADMIN_KEY       = 'numiaAdminAuth';
@@ -130,7 +130,7 @@
 
   function requireAdmin() {
     if (!isAdminAuthenticated()) {
-      global.location.replace('admin-login.html');
+      global.location.replace('admin-login-partners.html');
     }
   }
 
@@ -154,7 +154,7 @@
       var next = encodeURIComponent(
         global.location.pathname + global.location.search + global.location.hash
       );
-      global.location.replace('login.html?next=' + next);
+      global.location.replace('login-partners.html?next=' + next);
     }
   }
 
