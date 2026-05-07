@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Acceso demo — Numia</title>
+  <link rel="icon" type="image/png" href="images/N.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --numia-azul: #863DFF;
+      --numia-azul-oscuro: #060A27;
+    }
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: linear-gradient(145deg, #eef2fc 0%, #f5f5f5 50%, #ede9fe 100%);
+    }
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(6, 10, 39, 0.15);
+      overflow: hidden;
+      background: #fff;
+    }
+    .login-head {
+      background: var(--numia-azul-oscuro);
+      color: #fff;
+      padding: 1.5rem 1.75rem;
+      text-align: center;
+    }
+    .login-head img {
+      height: 36px;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+    }
+    .btn-entrar {
+      background: var(--numia-azul);
+      border: none;
+      font-weight: 600;
+      padding: 0.65rem 1.5rem;
+      transition: background 0.2s;
+    }
+    .btn-entrar:hover:not(:disabled) {
+      background: #6b2ecc;
+    }
+    .btn-entrar:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    .spinner-border-sm {
+      width: 1rem;
+      height: 1rem;
+      border-width: 0.15em;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="login-head">
+      <img src="images/numia.png" alt="Numia" />
+      <div class="fw-semibold">Acceso demo</div>
+      <div class="small opacity-75 mt-1">Tótem · Banca Partner</div>
+    </div>
+    <div class="login-body p-4">
+      <form id="formLogin" autocomplete="on" novalidate>
+        <div class="mb-3">
+          <label class="form-label" for="email">Email</label>
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            id="email"
+            name="email"
+            required
+            autocomplete="username"
+            placeholder="usuario@ejemplo.com"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="pwd">Contraseña</label>
+          <input
+            type="password"
+            class="form-control form-control-lg"
+            id="pwd"
+            name="password"
+            required
+            autocomplete="current-password"
+          />
+        </div>
+        <div class="alert alert-danger py-2 small d-none" id="err" role="alert"></div>
+        <div class="d-grid gap-2 mt-4">
+          <button type="submit" class="btn btn-primary btn-entrar text-white" id="btnSubmit">
+            <i class="bi bi-box-arrow-in-right me-2"></i>Entrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="auth-portal.js"></script>
+  <script>
+    (function () {
+      var params  = new URLSearchParams(window.location.search);
+      var nextUrl = AuthPortal.safeNextUrl(params.get('next') || 'totem-banca-partner.html');
+
+      /* Si ya hay sesión activa, saltear login */
+      if (AuthPortal.isAuthenticated()) {
+        window.location.replace(nextUrl);
+        return;
+      }
+
+      var form      = document.getElementById('formLogin');
+      var btn       = document.getElementById('btnSubmit');
+      var errBox    = document.getElementById('err');
+
+      function setLoading(on) {
+        btn.disabled = on;
+        btn.innerHTML = on
+          ? '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Verificando…'
+          : '<i class="bi bi-box-arrow-in-right me-2"></i>Entrar';
+      }
+
+      function showError(msg) {
+        errBox.textContent = msg;
+        errBox.classList.remove('d-none');
+      }
+
+      function hideError() {
+        errBox.classList.add('d-none');
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        hideError();
+
+        var email = (document.getElementById('email').value || '').trim();
+        var pwd   = (document.getElementById('pwd').value || '').trim();
+
+        if (!email || !pwd) {
+          showError('Ingresá tu email y contraseña.');
+          return;
+        }
+
+        setLoading(true);
+
+        AuthPortal.login(email, pwd)
+          .then(function (ok) {
+            if (ok) {
+              window.location.replace(nextUrl);
+            } else {
+              showError('Credenciales incorrectas. Verificá tu email y contraseña.');
+              setLoading(false);
+            }
+          })
+          .catch(function () {
+            showError('Error de conexión. Intentá nuevamente.');
+            setLoading(false);
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
