@@ -326,8 +326,8 @@
         <div class="subtitle">DNI: <span id="dniCitaDisplay"></span></div>
         <div class="opciones-grid">
           <div class="opcion-card" style="border-color:var(--numia-success);background:linear-gradient(135deg,#f0fdf4,#dcfce7);padding:2rem;">
-            <div class="opcion-icon" style="color:var(--numia-success);font-size:3rem;"><i class="bi bi-person-check"></i></div>
-            <div class="opcion-title" style="font-size:1.3rem;">Apertura de Cuenta</div>
+            <div class="opcion-icon" style="color:var(--numia-success);font-size:3rem;"><i class="bi bi-credit-card"></i></div>
+            <div class="opcion-title" style="font-size:1.3rem;">Tarjeta de Crédito</div>
             <div class="opcion-desc" style="margin:1rem 0;">Tiene una cita agendada para mañana</div>
             <button class="btn-continuar" id="btnCheckin" style="max-width:280px;margin:0.5rem auto 0;">
               <i class="bi bi-check-circle me-2"></i>Check-in
@@ -675,5 +675,7 @@
 
   });
   </script>
+  <script src="auth-portal.js"></script>
+  <script>AuthPortal.require();</script>
 </body>
 </html>
