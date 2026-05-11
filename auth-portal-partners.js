@@ -9,7 +9,7 @@
   var STORAGE_KEY    = 'numiaPortalDemoAuth';
   var SESSION_MAX_MS = 12 * 60 * 60 * 1000; // 12 horas
   var AUTH_API_URL   = 'https://debq2.debmedia.com/api/authenticate';
-  var SHEET_URL      = 'https://script.google.com/a/macros/numia.co/s/AKfycbxJ8QAIZtZUD88k_4L00dhsukOCvgbXT0-rpbGLsMeAyRXeIrDlam4uN7PA0VSAP0D6/exec';
+  var SHEET_URL      = 'https://script.google.com/macros/s/AKfycbxJ8QAIZtZUD88k_4L00dhsukOCvgbXT0-rpbGLsMeAyRXeIrDlam4uN7PA0VSAP0D6/exec';
 
   /* ── Admin credentials (solo para admin-partners.html) ── */
   var ADMIN_EMAIL    = 'jmacera.root@numia.co';
