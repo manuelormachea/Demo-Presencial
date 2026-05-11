@@ -56,8 +56,7 @@
           t: Date.now(),
           email: email
         }));
-        recordAccess(email);
-        return true;
+        return recordAccess(email).then(function() { return true; });
       }
       return false;
     })
@@ -75,20 +74,18 @@
   /* ────────────────────────────────────────────── */
 
   function recordAccess(email) {
-    try {
-      fetch(SHEET_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify({
-          email: email,
-          action: 'login',
-          ts: new Date().toISOString()
-        }),
-        mode: 'no-cors'
-      });
-    } catch (e) {
+    return fetch(SHEET_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        email: email,
+        action: 'login',
+        ts: new Date().toISOString()
+      }),
+      mode: 'no-cors'
+    }).catch(function() {
       // silencioso — no interrumpir el flujo de login
-    }
+    });
   }
 
   /* ────────────────────────────────────────────── */
